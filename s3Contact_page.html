@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact Page</title>
+
+  <link rel="stylesheet" href="./css/bootstrap.css">
+  <script src="./js/bootstrap.js"></script>
+  <link href="css/styles.css" type="text/css" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+
+  <!-- Wireframe link:
+  Mobile version: 
+  https://wireframe.cc/pro/pp/3d1ac6ff0695043
+  Desktop version:       
+  https://wireframe.cc/pro/pp/c7e3266a1692792-->
+
+
+<body class="FrontPage_Background">
+  <!-- This is the navigation bar section, utilizing bootstraps navbar functionality -->
+  <nav class="navbar navbar-expand-lg navbar-dark navigationBarBackground sticky-top shadow-lg">
+    <div class="container">
+      <div class="navbar-header">
+        <a class="navbar-brand" href="./index.html">
+          <img src="./images/logo.webp" alt="Logo" class="col-6 rounded mb-1">
+        </a>
+
+      </div>
+      <button class="navbar-toggler h-25 ms-auto mx-5 bg-secondary" type="button" data-bs-toggle="collapse"
+        data-bs-target="#mynavbar">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse justify-content-end mt-2" id="mynavbar">
+        <ul class="nav navbar-nav align-content-end">
+          <li class="nav-item">
+            <a href="./index.html" class="btn btn-secondary btn-sm me-2 mb-1">Home</a>
+          </li>
+          <li class="nav-item">
+            <a href="./s0PriceList.html" class="btn btn-secondary btn-sm me-2 mb-1">Prices</a>
+          </li>
+          <li class="nav-item">
+            <a href="./s1OngoingProjects_page.html" class="btn btn-secondary btn-sm me-2 mb-1">Current
+              Projects</a>
+          </li>
+          <li class="nav-item">
+            <a href="./s2Portfolio_page.html" class="btn btn-secondary btn-sm me-2 mb-1">Completed Projects</a>
+          </li>
+          <li class="nav-item">
+            <a href="./s3Contact_page.html" class="btn btn-secondary btn-sm me-2 active">Contact</a>
+          </li>
+        </ul>
+
+      </div>
+    </div>
+  </nav>
+
+  <!-- This is the headline -->
+  <div class="container SubPageElementBackground mt-2">
+    <div class="row">
+      <div class="col">
+        <h1 class="text-center text-light w-100 mt-5 overskrift">GET IN TOUCH</h1>
+      </div>
+    </div>
+
+    <!-- This is the information part of the contact page -->
+    <div class="row">
+
+      <!-- ADDRESS -->
+      <div class="col d-flex flex-column align-items-center">
+        <h1 class="text-center text-light w-100 mt-5 adresse">ADDRESS</h1>
+        <i class="fas fa-location  ADlogo rounded-circle"></i>
+
+        <p class="text-light">Visit us, we are located in the heart of Horsens.</p>
+        <p class="text-light"> Banegårdsgade 2, 8700 Horsens</p>
+      </div>
+
+
+
+      <!-- PHONE -->
+      <div class="col d-flex flex-column align-items-center">
+        <h1 class="text-center text-light w-100 mt-5 tlf-nummer">PHONE</h1>
+        <i class="fas fa-phone Plogo rounded-circle"></i>
+        <p class="text-light">Phone open every weekday, between 10 AM and 4 PM</p>
+        <p class="text-light">+45 11 11 11 11</p>
+      </div>
+
+
+      <!-- EMAIL -->
+      <div class="col d-flex flex-column align-items-center">
+        <h1 class="text-center text-light w-100 mt-5 e-mail">EMAIL</h1>
+        <i class="fas fa-mail-reply MLlogo rounded-circle"></i>
+        <p class="text-light">We answer emails every day, from 8 am to 5 pm</p>
+        <a href="mailto:Bobhorsens@gmail.com" target="_blank" class="btn btn-warning">Bobhorsens@gmail.com</a>
+      </div>
+
+    </div>
+
+    <!-- Link to social media -->
+    <div class="row">
+
+      <div class="col d-flex flex-row justify-content-center mb-3">
+
+        <a href="https://www.facebook.com" target="_blank"><i class="fab fa-facebook fb mx-3"></i></a>
+        <a href="https://www.twitter.com" target="_blank"><i class="fab fa-twitter tw mx-3"></i></a>
+        <a href="https://www.instagram.com" target="_blank"><i class="fab fa-instagram insta mx-3"></i></a>
+      </div>
+
+      <iframe
+        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2238.949879995477!2d9.83495187772794!3d55.86353598345564!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x464c63be87e17d19%3A0xa65113d28ba174ba!2sVIA%20University%20Campus%20Horsens!5e0!3m2!1sen!2sdk!4v1698164704080!5m2!1sen!2sdk"
+        class="w-100 pb-3 rounded-4" style="height:300px" allowfullscreen="" loading="lazy"
+        referrerpolicy="no-referrer-when-downgrade"></iframe>
+
+    </div>
+
+  </div>
+
+
+
+  <!-- Employee section -->
+  <div class="container SubPageElementBackground mt-5">
+
+    <h1 class="row text-center text-light w-100 mt-5 pt-2 overskrift justify-content-center">Our employees:</h1>
+
+    <div class="row p2-4 pb-4 px-2">
+
+      <div class="col-lg-3 col-md-5 col-sm-6 justify-content-center workCard mb-3 mx-auto">
+        <div class="card p-2 order-1 text-center border border-1 border-dark">
+          <img class="card-img-top" src="images/Contactpage/Kristian.webp" alt="Card image">
+          <div class="card-body">
+            <h4 class="card-title">Kristian Dashnaw</h4>
+            <p class="card-text RD">Residential</p>
+          </div>
+          <div class="card-footer">
+            <a href="mailto:344849@via.dk" class="btn btn-warning mt-auto mb-0">344849@via.dk</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-lg-3 col-md-5 col-sm-6 justify-content-center workCard mb-3 mx-auto">
+        <div class="card p-2 order-2 text-center border border-1 border-dark">
+          <img class="card-img-top" src="images/Contactpage/Alperen.webp" alt="Card image">
+          <div class="card-body CD">
+            <h4 class="card-title">Alperen Özer</h4>
+            <p class="card-text">Commercial</p>
+          </div>
+          <div class="card-footer">
+            <a href="mailto:344133@via.dk" class="btn btn-warning mt-auto mb-0">344133@via.dk</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-lg-3 col-md-5 col-sm-6 justify-content-center workCard mb-3 mx-auto">
+        <div class="card p-2 order-3 text-center border border-1 border-dark">
+          <img class="card-img-top" src="images/Contactpage/Elham.webp" alt="Card image">
+          <div class="card-body">
+            <h4 class="card-title">Elham Kadrolli</h4>
+            <p class="card-text RD">Infrastructure</p>
+          </div>
+          <div class="card-footer">
+            <a href="mailto:344849@via.dk" class="btn btn-warning mt-auto mb-0">346573@via.dk</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-lg-3 col-md-5 col-sm-6 justify-content-center workCard mb-3 mx-auto">
+        <div class="card p-2 order-4 text-center border border-1 border-dark">
+          <img class="card-img-top" src="images/Contactpage/Zakaria.webp" alt="Card image">
+          <div class="card-body">
+            <h4 class="card-title">Zakaria Banouri</h4>
+            <p class="card-text ID">Industrial</p>
+          </div>
+          <div class="card-footer">
+            <a href="mailto:280323@via.dk" target="_blank" class="btn btn-warning mt-auto mb-0">280323@via.dk</a>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </div>
+
+
+
+  <!-- Contact form -->
+  <div class="container SubPageElementBackground mt-5">
+    <div class="row mb-4">
+      <div class="col-md-8 offset-md-2">
+        <h2 class="text-center text-light overskrift2 mt-3">CONTACT US</h2>
+        <form action="process_contact_form.php" method="post">
+          <div class="form-group mb-3">
+            <label for="name" class="text-light">Name</label>
+            <input type="text" class="form-control" id="name" name="name" required>
+          </div>
+          <div class="form-group mb-3">
+            <label for="email" class="text-light">Email</label>
+            <input type="email" class="form-control" id="email" name="email" required>
+          </div>
+          <div class="form-group mb-3">
+            <label for="message" class="text-light">Message</label>
+            <textarea class="form-control" id="message" name="message" rows="4" required></textarea>
+          </div>
+          <button type="submit" class="btn btn-warning mt-2 mb-4">SEND</button>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <!-- Here we add the footer section -->
+  <div class="container-fluid p-2 navigationBarBackground d-flex justify-content-center">
+    <div class="container row">
+      <div class="col-8 col-md-9 p-2">
+        <p class="text-secondary">
+          &copy; 2023; Bob's construction company<br>
+          Developers: Alperen Özer, Elham Kadrolli,
+          Kristian Dashnaw & Zakaria Banouri, VIA University College
+          <br>
+          <!-- The below line is the credit for using the replit platform during this webpage design collaboration.-->
+          <a href="https://replit.com/@krigerkranne/SEP1-2023-Bob-the-Builders-Webpage"><img alt=""
+              src="https://replit.com/badge?theme=dark" class="replitBadge mt-1" /></a>
+        </p>
+      </div>
+      <div class="col-4 col-md-3 p-2">
+        <img src="images/logo.webp" alt="Bobs contruction company logo" class="w-100">
+      </div>
+    </div>
+  </div>
+</body>
+
+</html>

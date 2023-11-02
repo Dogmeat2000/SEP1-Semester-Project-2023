@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Portfolio projects</title>
+
+  <link href="css/styles.css" type="text/css" rel="stylesheet" />
+  <link rel="stylesheet" href="./css/bootstrap.css">
+  <script src="./js/bootstrap.js"></script>
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+
+<!-- Wireframe link, mobile: https://wireframe.cc/pwPwad -->
+<!-- Wireframe link, desktop: https://wireframe.cc/xrVCcz -->
+
+<!-- This is the navigation bar -->
+
+<body class="FrontPage_Background">
+  <nav class="navbar navbar-expand-lg navbar-dark navigationBarBackground sticky-top shadow-lg">
+    <div class="container">
+      <div class="navbar-header">
+        <a class="navbar-brand" href="./index.html">
+          <img src="./images/logo.webp" alt="Logo" class="col-6 rounded mb-1">
+        </a>
+
+      </div>
+      <button class="navbar-toggler h-25 ms-auto mx-5 bg-secondary" type="button" data-bs-toggle="collapse"
+        data-bs-target="#mynavbar">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse justify-content-end mt-2" id="mynavbar">
+        <ul class="nav navbar-nav align-content-end">
+          <li class="nav-item">
+            <a href="./index.html" class="btn btn-secondary btn-sm me-2 mb-1">Home</a>
+          </li>
+          <li class="nav-item">
+            <a href="./s0PriceList.html" class="btn btn-secondary btn-sm me-2 mb-1">Prices</a>
+          </li>
+          <li class="nav-item">
+            <a href="./s1OngoingProjects_page.html" class="btn btn-secondary btn-sm me-2 mb-1">Current
+              Projects</a>
+          </li>
+          <li class="nav-item">
+            <a href="./s2Portfolio_page.html" class="btn btn-secondary btn-sm me-2 mb-1 active">Completed Projects</a>
+          </li>
+          <li class="nav-item">
+            <a href="./s3Contact_page.html" class="btn btn-secondary btn-sm me-2">Contact</a>
+          </li>
+        </ul>
+
+      </div>
+    </div>
+  </nav>
+
+  <!-- This and below is unique for this page -->
+  <div class="container max-width mt-2 mb-4">
+
+    <!-- this is the header-->
+    <div class="row">
+      <div id="FrontPageCarousel" class="col-12 carousel slide max-width mb-2">
+
+        <!-- The slideshow/carousel -->
+        <div class="carousel-inner d-flex align-content-center">
+          <div class="carousel-item active">
+            <img src="./images/Commercial_Construction/HeroPicture5.webp" alt=""
+              class="mx-auto d-flex rounded-4 border border-2 border-dark w-100">
+            <div class="carousel-caption rounded-5 mx-auto">
+              <h1 class="text-light">Our Completed Projects</h1>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- this is the content, our completed projects, made in cards.-->
+
+    <div class="container row mx-auto justify-content-center w-100">
+      <div class="card col-12 col-lg-5 rounded-3 FrontPageSubElementBackground justify-content-center m-1">
+        <img class="card-img-top pt-2 rounded-5"
+          src="images/Paragraph_Photos/Ongoing_Residential_Projects/Paragraph_Ongoing_Residential12.webp"
+          alt="Card image">
+        <div class="card-body">
+          <h4 class="card-title">Project name</h4>
+          <p class="card-text">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum
+            has
+            been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type
+            and scrambled it to make a type specimen book.</p>
+        </div>
+      </div>
+      <div class="card col-12 col-lg-5 rounded-3 FrontPageSubElementBackground d-flex justify-content-center m-1">
+        <img class="card-img-top pt-2 rounded-5"
+          src="images/Paragraph_Photos/Completed_Commercial_Projects/Paragraph_Completed_Commercial1.webp"
+          alt="Card image">
+        <div class="card-body">
+          <h4 class="card-title">Project name</h4>
+          <p class="card-text">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum
+            has
+            been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type
+            and scrambled it to make a type specimen book.</p>
+        </div>
+      </div>
+      <div class="card col-12 col-lg-5 rounded-3 FrontPageSubElementBackground d-flex justify-content-center m-1">
+        <img class="card-img-top pt-2 rounded-1"
+          src="images/Paragraph_Photos/Completed_Industrial_Projects/Paragraph_Completed_Industrial7.webp"
+          alt="Card image">
+        <div class="card-body">
+          <h4 class="card-title">Project name</h4>
+          <p class="card-text">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum
+            has
+            been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type
+            and scrambled it to make a type specimen book.</p>
+        </div>
+      </div>
+      <div class="card col-12 col-lg-5 rounded-3 FrontPageSubElementBackground justify-content-center m-1">
+        <img class="card-img-top pt-2 rounded-5"
+          src="images/Paragraph_Photos/Completed_Road_Projects/Paragraph_Completed_Road5.webp" alt="Card image">
+        <div class="card-body">
+          <h4 class="card-title">Project name</h4>
+          <p class="card-text">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum
+            has
+            been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type
+            and scrambled it to make a type specimen book.</p>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+
+  <!-- this is the footer-->
+  <div class="container-fluid p-2 navigationBarBackground d-flex justify-content-center">
+    <div class="container row">
+      <div class="col-8 col-md-9 p-2">
+        <p class="text-secondary">
+          &copy; 2023; Bob's construction company<br>
+          Developers: Alperen Özer, Elham Kadrolli,
+          Kristian Dashnaw & Zakaria Banouri, VIA University College
+          <br>
+          <!-- The below line is the credit for using the replit platform during this webpage design collaboration.-->
+          <a href="https://replit.com/@krigerkranne/SEP1-2023-Bob-the-Builders-Webpage"><img
+              src="https://replit.com/badge?theme=dark" alt="" class="replitBadge mt-1" /></a>
+        </p>
+      </div>
+      <div class="col-4 col-md-3 p-2">
+        <img src="images/logo.webp" alt="Bobs contruction company logo" class="w-100">
+      </div>
+    </div>
+  </div>
+</body>
+
+</html>

@@ -1,0 +1,205 @@
+/*The below classes are used in the navigation bar*/
+.navigationBarBackground {
+  background-color: rgb(17, 41, 71);
+}
+
+/*The below classes are used on the front page:*/
+.addOpacity_75 {
+  opacity: 75%;
+}
+
+.addOpacity_75:hover {
+  opacity: 100%;
+}
+
+.FrontPage_Background {
+  background-color: rgb(190, 209, 225) !important;
+  /*background: url("/images/Image_FrontPageBackground.webp") no-repeat center;
+    background-size:cover;*/
+}
+
+.FrontPageSubElementBackground {
+  background: url("/images/Semi-Transparant_PhotoBackground.webp") repeat;
+  border-radius: 20px;
+}
+
+.FrontPageCustomWidth {
+  --bs-gutter-x: 1.5rem;
+  --bs-gutter-y: 0;
+  width: 100%;
+  padding-right: calc(var(--bs-gutter-x) * 0.5);
+  padding-left: calc(var(--bs-gutter-x) * 0.5);
+  margin-right: auto;
+  margin-left: auto;
+}
+
+@media screen and (max-width:768px) {
+  .carousel-caption {
+    background: url("/images/Semi-Transparant_PhotoBackground.webp") repeat;
+    border-radius: 120px;
+    top: 0.5rem;
+    bottom: auto;
+    height: 96px;
+    width: 75%;
+  }
+
+  .FrontPage_ResponsiveHeaderText {
+    font-size: 5.25vw;
+  }
+
+  .FrontPage_ResponsiveSubHeaderText {
+    font-size: 4.25vw;
+  }
+}
+
+@media screen and (max-width:768px) and (min-width:401px) {
+  .FrontPage_ResponsiveHeaderText {
+    font-size: 5.25vw;
+  }
+
+  .FrontPage_ResponsiveSubHeaderText {
+    font-size: 4.25vw;
+  }
+}
+
+@media screen and (max-width:400px) {
+  .FrontPage_ResponsiveHeaderText {
+    font-size: 9vw;
+  }
+
+  .FrontPage_ResponsiveSubHeaderText {
+    font-size: 6vw;
+  }
+}
+
+@media screen and (min-width:769px) and (max-width:1024px) {
+  .FrontPage_ResponsiveHeaderText {
+    font-size: 5.5vw;
+  }
+}
+
+@media screen and (min-width:769px) {
+  .carousel-caption {
+    background: url("/images/Semi-Transparant_PhotoBackground.webp") repeat;
+    border-radius: 120px;
+    top: 0.5rem;
+    bottom: auto;
+    height: 120px;
+    width: 50%;
+  }
+}
+
+@media (min-width: 576px) {
+  .FrontPageCustomWidth {
+    max-width: 540px;
+  }
+}
+
+@media (min-width: 768px) {
+  .FrontPageCustomWidth {
+    max-width: 720px;
+  }
+}
+
+@media (min-width: 992px) {
+  .FrontPageCustomWidth {
+    max-width: 960px;
+  }
+}
+
+@media (min-width: 1200px) {
+  .FrontPageCustomWidth {
+    max-width: 1140px;
+  }
+}
+
+@media (min-width: 1441px) {
+  .FrontPageCustomWidth {
+    max-width: 90%;
+  }
+}
+
+@media (min-width: 1641px) {
+  .FrontPageCustomWidth {
+    max-width: 80%;
+  }
+}
+
+@media (min-width: 1870px) {
+  .FrontPageCustomWidth {
+    max-width: 74%;
+  }
+}
+
+@media screen and (min-width:1400px) {
+  .carousel-caption {
+    background: url("/images/Semi-Transparant_PhotoBackground.webp") repeat;
+    border-radius: 120px;
+    top: 0.5rem;
+    bottom: auto;
+    height: 120px;
+    width: 60%;
+  }
+}
+
+.replitBadge {
+  position: relative;
+  bottom: 0;
+  left: 0;
+}
+
+/*The below classes are used on the subpages*/
+
+.SubPageElementBackground {
+  background: url("/images/SemiTransparant_BlueBackground.webp") repeat;
+  border-radius: 20px;
+}
+
+.addOpacity_60 {
+  opacity: 60%;
+}
+
+.card:hover {
+  transform: scale(1.01);
+  box-shadow: 0 10px 10px rgba(0, 0, 0, .12), 0 4px 8px rgba(0, 0, 0, .06);
+}
+
+/*The below classes are used on the ongoing projects page:*/
+
+.adresse {
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.tlf-nummer {
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.e-mail {
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.ADlogo,
+.Plogo,
+.MLlogo {
+
+  color: rgb(78, 68, 75);
+  background-color: rgb(210, 214, 79);
+  font-size: 40px;
+  color: #ffffff;
+}
+
+.fb,
+.tw,
+.insta {
+  font-size: 35px;
+}
+
+.RD,
+.CD,
+.RCD,
+.ID {
+  font-size: 20px;
+}

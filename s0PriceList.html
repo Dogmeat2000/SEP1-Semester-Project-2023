@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>List of prices and services</title>
+
+  <link rel="stylesheet" href="./css/bootstrap.css">
+  <script src="./js/bootstrap.js"></script>
+  <link href="css/styles.css" type="text/css" rel="stylesheet" />
+</head>
+
+<!-- Base wireframe templates -->
+<!-- Wireframe link, Mobile phone: https://wireframe.cc/QuapuR -->
+<!-- Wireframe link, desktop: https://wireframe.cc/ddjPXx -->
+
+<!-- Specific wireframes for the frontpage: -->
+<!-- Wireframe link, Mobile Phone: https://wireframe.cc/p8FuD2 -->
+<!-- Wireframe link, Desktop: https://wireframe.cc/UGmLLK -->
+
+
+<body class="FrontPage_Background">
+  <!-- This is the navigation bar section, utilizing bootstraps navbar functionality -->
+  <nav class="navbar navbar-expand-lg navbar-dark navigationBarBackground sticky-top shadow-lg">
+    <div class="container">
+      <div class="navbar-header">
+        <a class="navbar-brand" href="./index.html">
+          <img src="./images/logo.webp" alt="Logo" class="col-6 rounded mb-1">
+        </a>
+
+      </div>
+      <button class="navbar-toggler h-25 ms-auto mx-5 bg-secondary" type="button" data-bs-toggle="collapse"
+        data-bs-target="#mynavbar">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse justify-content-end mt-2" id="mynavbar">
+        <ul class="nav navbar-nav align-content-end">
+          <li class="nav-item">
+            <a href="./index.html" class="btn btn-secondary btn-sm me-2 mb-1">Home</a>
+          </li>
+          <li class="nav-item">
+            <a href="./s0PriceList.html" class="btn btn-secondary btn-sm me-2 mb-1 active">Prices</a>
+          </li>
+          <li class="nav-item">
+            <a href="./s1OngoingProjects_page.html" class="btn btn-secondary btn-sm me-2 mb-1">Current
+              Projects</a>
+          </li>
+          <li class="nav-item">
+            <a href="./s2Portfolio_page.html" class="btn btn-secondary btn-sm me-2 mb-1">Completed Projects</a>
+          </li>
+          <li class="nav-item">
+            <a href="./s3Contact_page.html" class="btn btn-secondary btn-sm me-2">Contact</a>
+          </li>
+        </ul>
+
+      </div>
+    </div>
+  </nav>
+
+  <!-- This and below is unique for this page -->
+  <div class="container max-width mt-2">
+
+    <!-- Here we insert the hero banner -->
+    <div class="row">
+      <div id="FrontPageCarousel" class="col-12 carousel slide max-width mb-2">
+
+        <!-- The slideshow/carousel -->
+        <div class="carousel-inner d-flex align-content-center">
+          <div class="carousel-item active">
+            <img src="./images/Generel_Construction/HeroPicture5.webp"
+              alt="Image of two people smiling over a well executed construction task, supervised by Bobs Construction Company."
+              class="mx-auto d-flex rounded-4 border border-2 border-dark w-100">
+            <div class="carousel-caption rounded-5 mx-auto">
+              <h1 class="text-light">Our services and price estimates</h1>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Here we add the first banner section -->
+    <div class="row">
+
+      <div id="banner_residential" class="FrontPageSubElementBackground pb-2 mb-3">
+
+        <div class="card mt-3 col-12 FrontPage_Background SubPageElementBackground">
+          <a class="btn w-100 p-1" data-bs-toggle="collapse" href="#collapse_residential_banner">
+            <img class="card-img-top img-fluid w-100 rounded-4 border border-1 border-dark addOpacity_60"
+              src="./images/Banner_Photos/BannerPhoto_Residence1.webp" alt="Image of residential project banner">
+            <div class="card-img-overlay px-0 text-end">
+              <h2 class="card-title mx-4 display-5 text-white"><b>Residential services</b></h2>
+              <p class="card-text mx-5 text-white">Click here for more info.</p>
+            </div>
+          </a>
+          <div id="collapse_residential_banner" class="collapse hide" data-bs-parent="#banner_residential">
+            <div class="card-body text-center text-light">
+              Discover your dream home with our residential construction services.<br><br>
+              At Bobs Construction, we specialize in creating bespoke, high-quality residences that reflect your unique
+              vision and lifestyle.<br>
+              Whether you're looking to build your new dream home from the ground up or undertake a stunning renovation,
+              we offer a wide range of customizable options.
+              <br><br>
+              Our experienced team of professionals is dedicated to delivering excellence in every aspect of your
+              project.
+              <br>
+              With price ranges starting from <b class="text-warning">$100,000 to $500,000</b>, we make luxury living
+              attainable.<br><br>
+              Trust us to turn your dream into a reality, where quality and affordability meet. <br><br>
+              Contact us today to begin your journey towards a beautiful, custom-built home.<br><br>
+            </div>
+          </div>
+
+        </div>
+        <div id="collapse_residential_banner" class="collapse hide text-center mb-2 mt-2">
+          <a href="./s3Contact_page.html" class="btn btn-warning btn-lg">Get an offer for your project today!</a>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- Here we add the second banner section -->
+    <div class="row">
+      <div id="banner_commercial" class="FrontPageSubElementBackground pb-2 mb-3">
+
+        <div class="card mt-3 col-12 FrontPage_Background SubPageElementBackground">
+          <a class="btn w-100 p-1" data-bs-toggle="collapse" href="#collapse_commercial_banner">
+            <img class="card-img-top img-fluid w-100 rounded-4 border border-1 border-dark addOpacity_60"
+              src="./images/Banner_Photos/BannerPhoto_Commercial1.webp" alt="Image of commercial project banner">
+            <div class="card-img-overlay px-0 text-start">
+              <h2 class="card-title ms-4 display-5 text-white"><b>Commercial services</b></h2>
+              <p class="card-text ms-5 text-white">Click here for more info.</p>
+            </div>
+          </a>
+          <div id="collapse_commercial_banner" class="collapse hide" data-bs-parent="#banner_commercial">
+            <div class="card-body text-center text-light">
+              Elevate your business space with Bob's Construction, your trusted partner for commercial
+              construction.<br><br>
+              With a proven track record of excellence, we specialize in turning your commercial visions into
+              reality.<br>
+              From office complexes to retail spaces and more, we offer a wide range of tailored solutions to suit your
+              business needs.<br>
+              Our dedicated team of experts delivers projects with precision, on time and within your budget.<br><br>
+
+              With a price range starting from <b class="text-warning">$500,000 to $2,000,000</b>, we bring quality and
+              affordability to your commercial projects.<br>
+              Experience the Bob's Construction advantage and elevate your business with us. <br><br>
+              Contact us today to discuss your next venture.<br><br>
+            </div>
+          </div>
+        </div>
+        <div id="collapse_commercial_banner" class="collapse hide text-center mb-2 mt-2">
+          <a href="./s3Contact_page.html" class="btn btn-warning btn-lg">Get an offer for your project today!</a>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- Here we add the third banner section -->
+    <div class="row">
+      <div id="banner_road" class="FrontPageSubElementBackground pb-2 mb-3">
+
+        <div class="card mt-3 col-12 FrontPage_Background SubPageElementBackground">
+          <a class="btn w-100 p-1" data-bs-toggle="collapse" href="#collapse_road_banner">
+            <img class="card-img-top img-fluid w-100 rounded-4 border border-1 border-dark addOpacity_60"
+              src="./images/Banner_Photos/BannerPhoto_Road1.webp" alt="Image of road project banner">
+            <div class="card-img-overlay px-0 text-end">
+              <h2 class="card-title mx-4 display-5 text-white"><b>Infrastructure services</b></h2>
+              <p class="card-text mx-5 text-white">Click here for more info.</p>
+            </div>
+          </a>
+          <div id="collapse_road_banner" class="collapse hide" data-bs-parent="#banner_road">
+            <div class="card-body text-center text-light">
+              Bob's Construction is your partner in building the pathways to progress. <br><br>
+
+              Our expertise in road and infrastructure construction is unmatched, making us the go-to choice for
+              projects that drive communities forward. <br>
+              From highways and bridges to utility installations, we offer comprehensive solutions tailored to meet your
+              infrastructure needs. <br>
+              <br>
+              Our dedicated team brings years of experience and a commitment to excellence to every project. <br><br>
+
+              With a price range starting from <b class="text-warning">$1,000,000 to $5,000,000</b>, we provide
+              high-quality, cost-effective solutions. <br>
+              <br>
+              Join forces with Bob's Construction and pave the way for a brighter future. <br>
+              <br>
+              Contact us today to embark on your next infrastructure journey.<br><br>
+            </div>
+          </div>
+        </div>
+        <div id="collapse_road_banner" class="collapse hide text-center mb-2 mt-2">
+          <a href="./s3Contact_page.html" class="btn btn-warning btn-lg">Get an offer for your project today!</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Here we add the fourth banner section -->
+    <div class="row">
+      <div id="banner_industrial" class="FrontPageSubElementBackground pb-2 mb-3">
+
+        <div class="card mt-3 col-12 FrontPage_Background SubPageElementBackground mb-3">
+          <a class="btn w-100 p-1" data-bs-toggle="collapse" href="#collapse_industrial_banner">
+            <img class="card-img-top img-fluid w-100 rounded-4 border border-1 border-dark addOpacity_60"
+              src="./images/Banner_Photos/BannerPhoto_Industrial1.webp" alt="Image of industrial project banner">
+            <div class="card-img-overlay px-0 text-start">
+              <h2 class="card-title ms-4 display-5 text-white"><b>Industrial services</b></h2>
+              <p class="card-text ms-5 text-white">Click here for more info.</p>
+            </div>
+          </a>
+          <div id="collapse_industrial_banner" class="collapse hide" data-bs-parent="#banner_industrial">
+            <div class="card-body text-center text-light">
+              Choose Bob's Construction for industrial construction solutions that stand the test of time. <br><br>
+
+              With a proven history of excellence, we specialize in creating robust, state-of-the-art industrial
+              facilities. <br>
+              From manufacturing plants to warehouses and beyond, we offer comprehensive services tailored to meet your
+              unique requirements. <br>
+              Our experienced team delivers projects with precision, on time, and within your budget. <br><br>
+
+              With a price range starting from <b class="text-warning">$2,000,000 to $10,000,000</b>, we offer
+              cost-effective quality that ensures your industrial operation's success.<br> <br>
+
+              Count on Bob's Construction to build the foundation for your industrial future. <br><br>
+
+              Contact us today to discuss your next industrial venture.<br><br>
+            </div>
+          </div>
+        </div>
+        <div id="collapse_industrial_banner" class="collapse hide text-center mb-2 mt-2">
+          <a href="./s3Contact_page.html" class="btn btn-warning btn-lg">Get an offer for your project today!</a>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Here we add the footer section -->
+  <div class="container-fluid p-2 navigationBarBackground d-flex justify-content-center">
+    <div class="row">
+      <div class="col-8 col-md-9 p-2">
+        <p class="text-secondary">
+          &copy; 2023; Bob's construction company<br>
+          Developers: Alperen Özer, Elham Kadrolli,
+          Kristian Dashnaw & Zakaria Banouri, VIA University College
+          <br>
+          <!-- The below line is the credit for using the replit platform during this webpage design collaboration.-->
+          <a href="https://replit.com/@krigerkranne/SEP1-2023-Bob-the-Builders-Webpage"><img
+              src="https://replit.com/badge?theme=dark" alt="" class="replitBadge mt-1" /></a>
+        </p>
+      </div>
+      <div class="col-4 col-md-3 p-2">
+        <img src="images/logo.webp" alt="Bobs contruction company logo" class="w-100">
+      </div>
+    </div>
+  </div>
+</body>
+
+</html>
