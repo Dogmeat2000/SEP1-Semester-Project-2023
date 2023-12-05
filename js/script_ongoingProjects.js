@@ -140,7 +140,7 @@ function convert_OngoingProjectData_To_HTML(projectTypeToConvert)
               htmlFormated_Data += "row text-center ms-3";
               htmlFormated_Data += quotationChar;
               htmlFormated_Data += ">";
-              htmlFormated_Data += "Current Material Expenses: $";
+              htmlFormated_Data += "Current Material Expenses&nbsp;&nbsp;: $";
               htmlFormated_Data += currentproject.MaterialExpences;
 
               //[5] Close 6th div wrapper.
@@ -152,7 +152,7 @@ function convert_OngoingProjectData_To_HTML(projectTypeToConvert)
               htmlFormated_Data += "row text-center ms-3";
               htmlFormated_Data += quotationChar;
               htmlFormated_Data += ">";
-              htmlFormated_Data += "Expected Toal Price: $";
+              htmlFormated_Data += "Expected Toal Price&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: $";
               htmlFormated_Data += currentproject.TotalBudget;
 
               //[5] Close 7th div wrapper.
@@ -165,7 +165,7 @@ function convert_OngoingProjectData_To_HTML(projectTypeToConvert)
               htmlFormated_Data += "row text-center ms-3";
               htmlFormated_Data += quotationChar;
               htmlFormated_Data += ">";
-              htmlFormated_Data += "Man-hours currently spent: ";
+              htmlFormated_Data += "Man-hours currently spent&nbsp;: ";
               htmlFormated_Data += currentproject.ManHoursSpent;
 
               //[5] Close 8th div wrapper.
@@ -177,7 +177,7 @@ function convert_OngoingProjectData_To_HTML(projectTypeToConvert)
               htmlFormated_Data += "row text-center ms-3";
               htmlFormated_Data += quotationChar;
               htmlFormated_Data += ">";
-              htmlFormated_Data += "Man-hours currently spent: ";
+              htmlFormated_Data += "Man-hours currently spent&nbsp;: ";
               htmlFormated_Data += currentproject.TotalManHoursNeeded;
 
               //[5] Close 9th div wrapper.
@@ -189,7 +189,7 @@ function convert_OngoingProjectData_To_HTML(projectTypeToConvert)
               htmlFormated_Data += "row text-center ms-3";
               htmlFormated_Data += quotationChar;
               htmlFormated_Data += ">";
-              htmlFormated_Data += "Project Started: ";
+              htmlFormated_Data += "Project Started&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: ";
               htmlFormated_Data += currentproject.ProjectStartDate;
 
               //[5] Close 10th div wrapper.
@@ -201,7 +201,7 @@ function convert_OngoingProjectData_To_HTML(projectTypeToConvert)
               htmlFormated_Data += "row text-center ms-3";
               htmlFormated_Data += quotationChar;
               htmlFormated_Data += ">";
-              htmlFormated_Data += "Project Deadline: ";
+              htmlFormated_Data += "Project Deadline&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: ";
               htmlFormated_Data += currentproject.ProjectEndDate;
 
               //[5] Close 11th div wrapper.
@@ -378,7 +378,6 @@ function daysBetweenDates(date1, date2)
     //console.log("before");
     while(isBefore(Date1_OBJ, Date2_OBJ) === true && counterDate < safetyShutOff)
     {
-      //console.log("+1");
       counterDate++;
       //Increment the day with 1 if the given day is less than the last day of the given month.
       if (Date1_OBJ.getDate() < 28)
@@ -418,16 +417,13 @@ function daysBetweenDates(date1, date2)
         //Add a single day, as this remaining loop will only run if the day is nr. 30, but the number of days in the month is 31!
         Date1_OBJ.setDate(Date1_OBJ.getDate()+1);
       }
-      //console.log(Date1_OBJ.getDate() + " " + numberOfDaysInMonth(Date1_OBJ) + " " + Date1_OBJ.getMonth() + " " + Date1_OBJ.getFullYear());
     }
   }
   else if(isBefore(Date1_OBJ, Date2_OBJ) === false)
   {
-    //console.log("after");
     while(isBefore(Date2_OBJ, Date1_OBJ) === true && counterDate < safetyShutOff)
     {
       counterDate++;
-      //console.log("+1");
       //Increment the day with 1 if the given day is less than the last day of the given month.
       if (Date2_OBJ.getDate() < 28)
       {

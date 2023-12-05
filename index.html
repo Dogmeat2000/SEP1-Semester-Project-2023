@@ -32,7 +32,6 @@
         <a class="navbar-brand" href="./index.html">
           <img src="./images/logo.webp" alt="Logo" class="col-6 rounded mb-1">
         </a>
-
       </div>
       <button class="navbar-toggler h-25 ms-auto mx-5 bg-secondary" type="button" data-bs-toggle="collapse"
         data-bs-target="#mynavbar">
@@ -64,7 +63,7 @@
   </nav>
 
   <!-- This and below is unique for the front page-->
-  <div class="FrontPageCustomWidth max-width mt-2" data-bs-spy="scroll" data-bs-target="frontpage_SubNavBar"
+  <Section class="FrontPageCustomWidth max-width mt-2" data-bs-spy="scroll" data-bs-target="frontpage_SubNavBar"
     data-bs-offset="-200">
     <!-- First row contains the carousel / hero element of the front page-->
     <div class="row">
@@ -128,18 +127,11 @@
             </div>
           </div>
         </div>
-
-        <!-- Left and right controls/icons: HIDDEN FOR NOW SINCE I THINK IT LOOKS BETTER WITH THEM GONE! -->
-        <!--<button class="carousel-control-prev" type="button" data-bs-target="#demo" data-bs-slide="prev">
-                <span class="carousel-control-prev-icon bg-dark"></span>
-            </button>
-            <button class="carousel-control-next" type="button" data-bs-target="#demo" data-bs-slide="next">
-                <span class="carousel-control-next-icon bg-dark"></span>
-            </button>-->
       </div>
     </div>
-  </div>
-  <div class="container max-width mt-2" data-bs-spy="scroll" data-bs-target="frontpage_SubNavBar" data-bs-offset="-200">
+  </Section>
+
+  <Main class="container max-width mt-2" data-bs-spy="scroll" data-bs-target="frontpage_SubNavBar" data-bs-offset="-200">
     <!-- Here we add another navbar. A sub bar intented to improve the scroll experience and presentation of the frontpage.-->
     <nav class="navbar navbar-expand navbar-dark navigationBarBackground shadow-lg rounded-3 mt-1"
       id="frontpage_SubNavBar">
@@ -161,34 +153,33 @@
     </nav>
 
     <!-- The below section adds a row containing the promotion section of the front page-->
-    <div class="row mt-5" id="Promotion_Section">
-      <!-- Intentional empty, for proper scrolling when using sub-nav-bar --><br><br>
-    </div>
-    <div class="row FrontPageSubElementBackground mt-5">
+    <Section class="row mt-5" id="Promotion_Section">
+      <!-- Intentional empty, for proper scrolling when using sub-nav-bar --><br>
+    </Section>
+    <Section class="row FrontPageSubElementBackground mt-5 mb-5">
       <div class="row m-1">
         <h1 class="col-12 d-flex justify-content-center display-3 FrontPage_ResponsiveHeaderText">Our Company</h1>
       </div>
 
-      <p class="col-12 mx-auto text-center">
+      <p class="col-12 mx-auto text-center mb-5">
         <img src="./images/logoHighResolution.webp" alt="The logo of Bob's Construction Company" class="w-100">
-        <b><br><br>Bob's Construction Company is a family driven company.<br><br>Founded in 1954 in Denmark, in the
+        <br><br>Bob's Construction Company is a family driven company.<br><br>Founded in 1954 in Denmark, in the
           ashes of World War II, we have more than 70 years of practical experience, with many <a
             href="http://trustpilot.dk" target="_blank">satisfied customers</a>.
           <br><br>
           The current owner, Bob, is the 4th generation Bob to run the company.<br>
-          <br><br></b>
       </p>
-    </div>
+    </Section>
 
     <!-- Here we add the first content section-->
-    <div class="row" id="Frontpage_Section_1">
-      <!-- Intentional empty, for proper scrolling when using sub-nav-bar --><br><br>
-    </div>
-    <div class="row FrontPageSubElementBackground mt-5 pb-3">
+    <Section class="row mb-5" id="Frontpage_Section_1">
+      <!-- Intentional empty, for proper scrolling when using sub-nav-bar --><br>
+    </Section>
+    <Section class="row FrontPageSubElementBackground mt-5 pb-3 mb-5">
       <div class="row m-2">
-        <a href="#Top_Of_Page" class="col-2 col-lg-1 btn btn-secondary mb-5">Top</a>
+        <a href="#Top_Of_Page" class="col-2 col-lg-1 btn btn-secondary mb-5 position-absolute">Top</a>
         <h1 class="col-10 col-lg-11 mx-auto d-flex justify-content-center display-3 FrontPage_ResponsiveHeaderText">Our
-          expertise&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</h1>
+          expertise</h1>
       </div>
 
       <div class="row">
@@ -228,10 +219,10 @@
         </p>
 
         <p>
-          <a href="./s3Contact_page.html" class="btn btn-warning btn-lg">Contact us now!</a><br><br>
+          <a href="./s3Contact_page.html" class="btn btn-warning btn-lg">Contact us now!</a>
         </p>
       </div>
-      <div class="col-sm-12 col-lg-5 m-auto text-center align-between">
+      <div class="col-sm-12 col-lg-5 m-auto text-center align-between mb-5">
         <a href="./images/Paragraph_Photos/ParagraphPicture1.webp">
           <img src="./images/Paragraph_Photos/ParagraphPicture1.webp"
             alt="A picture of a construction supervisor coordinating with a customer"
@@ -240,18 +231,17 @@
         <a href="./s0PriceList.html" target="_blank" class="btn btn-info btn-lg mt-3">Click here
           for more details!</a>
       </div>
-
-    </div>
+    </Section>
 
     <!-- Here we add the second content section-->
-    <div class="row" id="Frontpage_Section_2">
-      <!-- Intentional empty, for proper scrolling when using sub-nav-bar --><br><br>
-    </div>
-    <div class="row FrontPageSubElementBackground mt-5">
+    <Section class="row" id="Frontpage_Section_2">
+      <!-- Intentional empty, for proper scrolling when using sub-nav-bar -->
+    </Section>
+    <Section class="row FrontPageSubElementBackground mt-5 mb-5">
       <div class="row m-2">
-        <a href="#Top_Of_Page" class="col-2 col-lg-1 btn btn-secondary mb-5">Top</a>
+        <a href="#Top_Of_Page" class="col-2 col-lg-1 btn btn-secondary mb-5 position-absolute">Top</a>
         <h1 class="col-10 col-lg-11 mx-auto d-flex justify-content-center display-3 FrontPage_ResponsiveHeaderText">Our
-          Promise&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</h1>
+          Promise</h1>
       </div>
 
       <div class="row">
@@ -267,7 +257,7 @@
           class="addOpacity_75 d-flex rounded-2 w-100">
       </a>
 
-      <div class="col-sm-12 col-lg-7 m-auto mt-3 text-center">
+      <div class="col-sm-12 col-lg-7 m-auto mt-3 text-center mb-5">
         <h6 class="display-6">
           Our Goals:<br>
         </h6>
@@ -298,14 +288,12 @@
             to learn more!</a><br><br>
         </p>
       </div>
-
-    </div>
-    <br><br><br>
-  </div>
+    </Section>
+  </Main>
 
 
   <!-- Here we add the footer section -->
-  <div class="container-fluid p-2 navigationBarBackground d-flex justify-content-center">
+  <Section class="container-fluid p-2 navigationBarBackground d-flex justify-content-center">
     <div class="container row">
       <div class="col-8 col-md-9 p-2">
         <p class="text-secondary">
@@ -322,7 +310,7 @@
         <img src="images/logo.webp" alt="Bobs contruction company logo" class="w-100">
       </div>
     </div>
-  </div>
+  </Section>
 
   <!-- Add javaScript files! -->
   <script src="js/jquery-3.7.1.js"></script>
