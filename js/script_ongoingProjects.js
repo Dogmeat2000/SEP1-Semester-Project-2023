@@ -329,11 +329,8 @@ function convert_OngoingProjectData_To_HTML(projectTypeToConvert, sortingAttribu
               htmlFormated_Data += ">";
 
                 //[6] Open 14th div wrapper: <div class="progress-bar progress-bar-striped active" role="progressbar" aria-valuenow="PERCENTAGE" aria-valuemin="0" aria-valuemax="100" style="width:PERCENTAGE">PERCENTAGE
-
                 //Calculate actual progress given todays date, start date and end date information from the project.
-
                 //Check if today is later than the projected end date.
-
 
                 let startDate_split = currentproject.ProjectStartDate.split("/");
                 let startDate_day = Number(startDate_split[0]);
@@ -715,6 +712,153 @@ function sortProjectByNameDescending()
   });
   displayProjectData();
 }
+
+function sortProjectByProgressAscending()
+{
+  JSON_ProjectsArray.ongoingProjectArray = JSON_ProjectsArray.ongoingProjectArray.sort((a, b) => {
+
+    //Calculate progress of element a:
+    let startDate_split = a.ProjectStartDate.split("/");
+    let startDate_day = Number(startDate_split[0]);
+    let startDate_month = Number(startDate_split[1]);
+    let startDate_year = Number(startDate_split[2]);
+    let startDate_OBJ = new Date(startDate_year, startDate_month-1, startDate_day);                  
+
+    let endDate_split = a.ProjectEndDate.split("/");
+    let endDate_day = Number(endDate_split[0]);
+    let endDate_month = Number(endDate_split[1]);
+    let endDate_year = Number(endDate_split[2]);
+    let endDate_OBJ = new Date(endDate_year, endDate_month-1, endDate_day);
+
+    let a_percentageCompleted = 100;
+
+    //Check if project has started yet:
+    if(isBefore(todayDate,startDate_OBJ) === true)
+    {
+      a_percentageCompleted = 0;
+    }
+    //Check if today is before the project end date;
+    else if(isBefore(todayDate,endDate_OBJ) === true)
+    {
+      //Today is before the projected deadline. Calculate percentage days remaining.
+      let totalProjectDuration_days = Number(daysBetweenDates(a.ProjectStartDate, a.ProjectEndDate));
+
+      let projectDurationRemaining_days = Number(daysBetweenDates("" + todayDate.getDate() + "/" + (todayDate.getMonth()-1) + "/" + todayDate.getFullYear(), a.ProjectEndDate));
+      a_percentageCompleted = Math.floor(100 - ((projectDurationRemaining_days/totalProjectDuration_days)*100));
+    }
+
+      //Calculate progress of element a:
+      startDate_split = b.ProjectStartDate.split("/");
+      startDate_day = Number(startDate_split[0]);
+      startDate_month = Number(startDate_split[1]);
+      startDate_year = Number(startDate_split[2]);
+      startDate_OBJ = new Date(startDate_year, startDate_month-1, startDate_day);                  
+  
+      endDate_split = b.ProjectEndDate.split("/");
+      endDate_day = Number(endDate_split[0]);
+      endDate_month = Number(endDate_split[1]);
+      endDate_year = Number(endDate_split[2]);
+      endDate_OBJ = new Date(endDate_year, endDate_month-1, endDate_day);
+  
+      let b_percentageCompleted = 100;
+  
+      //Check if project has started yet:
+      if(isBefore(todayDate,startDate_OBJ) === true)
+      {
+        b_percentageCompleted = 0;
+      }
+      //Check if today is before the project end date;
+      else if(isBefore(todayDate,endDate_OBJ) === true)
+      {
+        //Today is before the projected deadline. Calculate percentage days remaining.
+        let totalProjectDuration_days = Number(daysBetweenDates(b.ProjectStartDate, b.ProjectEndDate));
+  
+        let projectDurationRemaining_days = Number(daysBetweenDates("" + todayDate.getDate() + "/" + (todayDate.getMonth()-1) + "/" + todayDate.getFullYear(), b.ProjectEndDate));
+        b_percentageCompleted = Math.floor(100 - ((projectDurationRemaining_days/totalProjectDuration_days)*100));
+      }
+
+
+    if (a_percentageCompleted < b_percentageCompleted) {
+      return -1;
+    }
+  });
+  displayProjectData();
+}
+
+function sortProjectByProgressDescending()
+{
+  JSON_ProjectsArray.ongoingProjectArray = JSON_ProjectsArray.ongoingProjectArray.sort((a, b) => {
+
+    //Calculate progress of element a:
+    let startDate_split = a.ProjectStartDate.split("/");
+    let startDate_day = Number(startDate_split[0]);
+    let startDate_month = Number(startDate_split[1]);
+    let startDate_year = Number(startDate_split[2]);
+    let startDate_OBJ = new Date(startDate_year, startDate_month-1, startDate_day);                  
+
+    let endDate_split = a.ProjectEndDate.split("/");
+    let endDate_day = Number(endDate_split[0]);
+    let endDate_month = Number(endDate_split[1]);
+    let endDate_year = Number(endDate_split[2]);
+    let endDate_OBJ = new Date(endDate_year, endDate_month-1, endDate_day);
+
+    let a_percentageCompleted = 100;
+
+    //Check if project has started yet:
+    if(isBefore(todayDate,startDate_OBJ) === true)
+    {
+      a_percentageCompleted = 0;
+    }
+    //Check if today is before the project end date;
+    else if(isBefore(todayDate,endDate_OBJ) === true)
+    {
+      //Today is before the projected deadline. Calculate percentage days remaining.
+      let totalProjectDuration_days = Number(daysBetweenDates(a.ProjectStartDate, a.ProjectEndDate));
+
+      let projectDurationRemaining_days = Number(daysBetweenDates("" + todayDate.getDate() + "/" + (todayDate.getMonth()-1) + "/" + todayDate.getFullYear(), a.ProjectEndDate));
+      a_percentageCompleted = Math.floor(100 - ((projectDurationRemaining_days/totalProjectDuration_days)*100));
+    }
+
+      //Calculate progress of element a:
+      startDate_split = b.ProjectStartDate.split("/");
+      startDate_day = Number(startDate_split[0]);
+      startDate_month = Number(startDate_split[1]);
+      startDate_year = Number(startDate_split[2]);
+      startDate_OBJ = new Date(startDate_year, startDate_month-1, startDate_day);                  
+  
+      endDate_split = b.ProjectEndDate.split("/");
+      endDate_day = Number(endDate_split[0]);
+      endDate_month = Number(endDate_split[1]);
+      endDate_year = Number(endDate_split[2]);
+      endDate_OBJ = new Date(endDate_year, endDate_month-1, endDate_day);
+  
+      let b_percentageCompleted = 100;
+  
+      //Check if project has started yet:
+      if(isBefore(todayDate,startDate_OBJ) === true)
+      {
+        b_percentageCompleted = 0;
+      }
+      //Check if today is before the project end date;
+      else if(isBefore(todayDate,endDate_OBJ) === true)
+      {
+        //Today is before the projected deadline. Calculate percentage days remaining.
+        let totalProjectDuration_days = Number(daysBetweenDates(b.ProjectStartDate, b.ProjectEndDate));
+  
+        let projectDurationRemaining_days = Number(daysBetweenDates("" + todayDate.getDate() + "/" + (todayDate.getMonth()-1) + "/" + todayDate.getFullYear(), b.ProjectEndDate));
+        b_percentageCompleted = Math.floor(100 - ((projectDurationRemaining_days/totalProjectDuration_days)*100));
+      }
+
+
+    if (a_percentageCompleted > b_percentageCompleted) {
+      return -1;
+    }
+  });
+  displayProjectData();
+}
+
+
+
 
 sortProjectByNameAscending();
 sortProjectByNameDescending();
