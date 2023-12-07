@@ -4,31 +4,51 @@
 import JSON_ProjectsArray from '/Project Data Files/exported-OngoingProjects.json' assert {type: 'json'};
 
 //Attributes:
-const image_defaultResidentialOngoing = "/images/Paragraph_Photos/Ongoing_Residential_Projects/Paragraph_Ongoing_Residential3.webp"; //Default image to display on ongoing residential projects if user didn't define a picture.
-const image_defaultCommercialOngoing = "/images/Paragraph_Photos/Ongoing_Commercial_Projects/Paragraph_Ongoing_Commercial2.webp"; //Default image to display on ongoing commercial projects if user didn't define a picture.
-const image_defaultIndustrialOngoing = "/images/Paragraph_Photos/Ongoing_Industrial_Projects/Paragraph_Ongoing_Industrial4.webp"; //Default image to display on ongoing industrial projects if user didn't define a picture.
-const image_defaultRoadOngoing = "/images/Paragraph_Photos/Ongoing_Road_Projects/Paragraph_Ongoing_Road5.webp"; //Default image to display on ongoing road projects if user didn't define a picture.
 const todayDate = new Date(); //Contains todays date.
+
+//Declare some arrays that hold our test images. At the moment these are assigned randomly, however we have prepared for the option of adding pictures to projects at a later date.
+const randomResidentialOngoingImages_Array = [
+"/images/Paragraph_Photos/Ongoing_Residential_Projects/Paragraph_Ongoing_Residential1.webp",
+"/images/Paragraph_Photos/Ongoing_Residential_Projects/Paragraph_Ongoing_Residential2.webp",
+"/images/Paragraph_Photos/Ongoing_Residential_Projects/Paragraph_Ongoing_Residential3.webp",
+"/images/Paragraph_Photos/Ongoing_Residential_Projects/Paragraph_Ongoing_Residential4.webp",
+"/images/Paragraph_Photos/Ongoing_Residential_Projects/Paragraph_Ongoing_Residential5.webp",
+"/images/Paragraph_Photos/Ongoing_Residential_Projects/Paragraph_Ongoing_Residential6.webp",
+"/images/Paragraph_Photos/Ongoing_Residential_Projects/Paragraph_Ongoing_Residential7.webp",
+"/images/Paragraph_Photos/Ongoing_Residential_Projects/Paragraph_Ongoing_Residential8.webp",
+"/images/Paragraph_Photos/Ongoing_Residential_Projects/Paragraph_Ongoing_Residential9.webp",
+"/images/Paragraph_Photos/Ongoing_Residential_Projects/Paragraph_Ongoing_Residential10.webp"
+];
+
+const randomCommercialOngoingImages_Array = [
+  "/images/Paragraph_Photos/Ongoing_Commercial_Projects/Paragraph_Ongoing_Commercial1.webp",
+  "/images/Paragraph_Photos/Ongoing_Commercial_Projects/Paragraph_Ongoing_Commercial2.webp",
+  "/images/Paragraph_Photos/Ongoing_Commercial_Projects/Paragraph_Ongoing_Commercial3.webp",
+  "/images/Paragraph_Photos/Ongoing_Commercial_Projects/Paragraph_Ongoing_Commercial4.webp"
+];
+
+const randomIndustrialOngoingImages_Array = [
+  "/images/Paragraph_Photos/Ongoing_Industrial_Projects/Paragraph_Ongoing_Industrial1.webp",
+  "/images/Paragraph_Photos/Ongoing_Industrial_Projects/Paragraph_Ongoing_Industrial2.webp",
+  "/images/Paragraph_Photos/Ongoing_Industrial_Projects/Paragraph_Ongoing_Industrial3.webp",
+  "/images/Paragraph_Photos/Ongoing_Industrial_Projects/Paragraph_Ongoing_Industrial4.webp",
+  "/images/Paragraph_Photos/Ongoing_Industrial_Projects/Paragraph_Ongoing_Industrial5.webp",
+  "/images/Paragraph_Photos/Ongoing_Industrial_Projects/Paragraph_Ongoing_Industrial6.webp",
+  "/images/Paragraph_Photos/Ongoing_Industrial_Projects/Paragraph_Ongoing_Industrial7.webp"
+];
+
+const randomRoadOngoingImages_Array = [
+  "/images/Paragraph_Photos/Ongoing_Road_Projects/Paragraph_Ongoing_Road1.webp",
+  "/images/Paragraph_Photos/Ongoing_Road_Projects/Paragraph_Ongoing_Road2.webp",
+  "/images/Paragraph_Photos/Ongoing_Road_Projects/Paragraph_Ongoing_Road3.webp",
+  "/images/Paragraph_Photos/Ongoing_Road_Projects/Paragraph_Ongoing_Road4.webp",
+  "/images/Paragraph_Photos/Ongoing_Road_Projects/Paragraph_Ongoing_Road5.webp",
+  "/images/Paragraph_Photos/Ongoing_Road_Projects/Paragraph_Ongoing_Road6.webp"
+];
 
 var htmlFormated_Data = ""; //Contains the HTML formated ongoing residential project data for display on webpage.
 
 var quotationChar = String.fromCharCode(34); //Ascii value for the ' " ' char, that is needed when converting this to the desired html format.
-
-
-
-//This function removes the attribute "value" from the array "name". It requires Jquery to function.
-//It is based on an answer given on StackOverflow: https://stackoverflow.com/questions/5767325/how-can-i-remove-a-specific-item-from-an-array-in-javascript
-/*Array.prototype.removeValue = function(name, value)
-{
-  var array = $.map(this, function(v,i)
-  {
-     return v[name] === value ? null : v;
-  });
-  this.length = 0; //clear original array
-  this.push.apply(this, array); //push all elements except the one we want to delete
-}*/
-
-
 
 //This function converts the imported JSON array into the proper html formatted version for compatible with display on the webpage:
 //Project type/Parameter is one of these: "Residential", "Road", "Industrial" or "Commercial". Anything else will result in an error, since these do not exist in the exported data.
@@ -39,89 +59,218 @@ function convert_OngoingProjectData_To_HTML(projectTypeToConvert, sortingAttribu
   let projectCounter = 0; //Used to evaluate if there are any projects of this type in the system. Else display an information text on the website informing of no current projects of this type.
   htmlFormated_Data = ""; //Reset html data container.
   
-
   //Display a sorting bar:
-  /*htmlFormated_Data += "<nav class=";
+  htmlFormated_Data += "<nav class=";
   htmlFormated_Data += quotationChar;
-  htmlFormated_Data += "navbar navbar-expand navbar-dark navigationBarBackground shadow-lg rounded-3 mt-1";
+  htmlFormated_Data += "navbar navbar-expand-md navbar-dark navigationBarBackground shadow-md rounded-3";
   htmlFormated_Data += quotationChar;
-  htmlFormated_Data += "id=";
+  htmlFormated_Data += "><div class=";
   htmlFormated_Data += quotationChar;
-  htmlFormated_Data += "frontpage_SubNavBar";
+  htmlFormated_Data += "collapse navbar-collapse d-flex justify-content-center";
   htmlFormated_Data += quotationChar;
-  htmlFormated_Data += ">";
-  htmlFormated_Data += "<div class=";
+  htmlFormated_Data += "><div class=";
   htmlFormated_Data += quotationChar;
-  htmlFormated_Data += "FrontPageCustomWidth d-flex justify-content-center";
+  htmlFormated_Data += "navbar-header";
   htmlFormated_Data += quotationChar;
-  htmlFormated_Data += ">";
-  htmlFormated_Data += "<div class=";
+  htmlFormated_Data += "><p class=";
   htmlFormated_Data += quotationChar;
+  htmlFormated_Data += "text-light mx-3 m-auto";
+  htmlFormated_Data += quotationChar;
+  htmlFormated_Data += ">Sort by:</p></div><button class=";
+  htmlFormated_Data += quotationChar;
+  htmlFormated_Data += "navbar-toggler ms-auto mx-1 bg-secondary";
+  htmlFormated_Data += quotationChar;
+  htmlFormated_Data += " type=";
+  htmlFormated_Data += quotationChar;
+  htmlFormated_Data += "button";
+  htmlFormated_Data += quotationChar;
+  htmlFormated_Data += " data-bs-toggle=";
+  htmlFormated_Data += quotationChar;
+  htmlFormated_Data += "collapse";
+  htmlFormated_Data += quotationChar;
+  htmlFormated_Data += " data-bs-target=";
+  htmlFormated_Data += quotationChar;
+  htmlFormated_Data += "#sorting_Bar";
+  htmlFormated_Data += quotationChar;
+  htmlFormated_Data += "><span class=";
+  htmlFormated_Data += quotationChar;
+  htmlFormated_Data += "navbar-toggler-icon";
+  htmlFormated_Data += quotationChar;
+  htmlFormated_Data += "></span></button><div class=";
+  htmlFormated_Data += quotationChar;
+  htmlFormated_Data += "collapse navbar-collapse justify-content-center";
   htmlFormated_Data += quotationChar;
   htmlFormated_Data += " id=";
   htmlFormated_Data += quotationChar;
-  htmlFormated_Data += "frontpage_Smoothscroll";
+  htmlFormated_Data += "sorting_Bar";
   htmlFormated_Data += quotationChar;
-  htmlFormated_Data += ">";
-  htmlFormated_Data += "<ul class=";
+  htmlFormated_Data += "><ul class=";
   htmlFormated_Data += quotationChar;
   htmlFormated_Data += "nav navbar-nav";
   htmlFormated_Data += quotationChar;
-  htmlFormated_Data += ">";
-  htmlFormated_Data += "<li class=";
-  htmlFormated_Data += quotationChar;
-  htmlFormated_Data += "<li class=";
+  htmlFormated_Data += "><li class=";
   htmlFormated_Data += quotationChar;
   htmlFormated_Data += "nav-item";
   htmlFormated_Data += quotationChar;
-  htmlFormated_Data += ">";
-  htmlFormated_Data += "<a href=";
+  htmlFormated_Data += "><button id=";
   htmlFormated_Data += quotationChar;
-  htmlFormated_Data += "#Promotion_Section";
+  if(projectTypeToConvert === "Residential")
+  {
+    htmlFormated_Data += "sortProjectsbyNameAscending1";
+  }
+  else if(projectTypeToConvert === "Commercial")
+  {
+    htmlFormated_Data += "sortProjectsbyNameAscending2";
+  }
+  else if(projectTypeToConvert === "Industrial")
+  {
+    htmlFormated_Data += "sortProjectsbyNameAscending3";
+  }
+  else
+  {
+    htmlFormated_Data += "sortProjectsbyNameAscending4";
+  }
   htmlFormated_Data += quotationChar;
   htmlFormated_Data += " class=";
   htmlFormated_Data += quotationChar;
-  htmlFormated_Data += "btn btn-secondary btn-sm me-1";
+  htmlFormated_Data += "btn btn-secondary btn-sm me-1 mt-1 mb-1";
   htmlFormated_Data += quotationChar;
-  htmlFormated_Data += ">Sort by: Name (Ascending)</a>";
-  htmlFormated_Data += "</li>";
-  htmlFormated_Data += quotationChar;
-  htmlFormated_Data += "<li class=";
+  htmlFormated_Data += ">Name<br>(Ascending)</button></li><li class=";
   htmlFormated_Data += quotationChar;
   htmlFormated_Data += "nav-item";
   htmlFormated_Data += quotationChar;
-  htmlFormated_Data += ">";
-  htmlFormated_Data += "<a href=";
+  htmlFormated_Data += "><button id=";
   htmlFormated_Data += quotationChar;
-  htmlFormated_Data += "#Frontpage_Section_1";
+  if(projectTypeToConvert === "Residential")
+  {
+    htmlFormated_Data += "sortProjectByNameDescending1";
+  }
+  else if(projectTypeToConvert === "Commercial")
+  {
+    htmlFormated_Data += "sortProjectByNameDescending2";
+  }
+  else if(projectTypeToConvert === "Industrial")
+  {
+    htmlFormated_Data += "sortProjectByNameDescending3";
+  }
+  else
+  {
+    htmlFormated_Data += "sortProjectByNameDescending4";
+  }
   htmlFormated_Data += quotationChar;
   htmlFormated_Data += " class=";
   htmlFormated_Data += quotationChar;
-  htmlFormated_Data += "btn btn-secondary btn-sm me-1";
+  htmlFormated_Data += "btn btn-secondary btn-sm me-1 mt-1 mb-1";
   htmlFormated_Data += quotationChar;
-  htmlFormated_Data += ">Our Expertise</a>";
-  htmlFormated_Data += "</li>";
-  htmlFormated_Data += quotationChar;
-  htmlFormated_Data += "<li class=";
+  htmlFormated_Data += ">Name<br>(Descending)</button></li><li class=";
   htmlFormated_Data += quotationChar;
   htmlFormated_Data += "nav-item";
   htmlFormated_Data += quotationChar;
-  htmlFormated_Data += ">";
-  htmlFormated_Data += "<a href=";
+  htmlFormated_Data += "><button id=";
   htmlFormated_Data += quotationChar;
-  htmlFormated_Data += "#Frontpage_Section_2";
+  if(projectTypeToConvert === "Residential")
+  {
+    htmlFormated_Data += "sortProjectByBudgetAscending1";
+  }
+  else if(projectTypeToConvert === "Commercial")
+  {
+    htmlFormated_Data += "sortProjectByBudgetAscending2";
+  }
+  else if(projectTypeToConvert === "Industrial")
+  {
+    htmlFormated_Data += "sortProjectByBudgetAscending3";
+  }
+  else
+  {
+    htmlFormated_Data += "sortProjectByBudgetAscending4";
+  }
   htmlFormated_Data += quotationChar;
   htmlFormated_Data += " class=";
   htmlFormated_Data += quotationChar;
-  htmlFormated_Data += "btn btn-secondary btn-sm me-1";
+  htmlFormated_Data += "btn btn-secondary btn-sm me-1 mt-1 mb-1";
   htmlFormated_Data += quotationChar;
-  htmlFormated_Data += ">Our Promise</a>";
-  htmlFormated_Data += "</li>";
-  htmlFormated_Data += "</ul>";
-  htmlFormated_Data += "</div>";
-  htmlFormated_Data += "</div>";
-  htmlFormated_Data += "</nav>";*/
-
+  htmlFormated_Data += ">Budget<br>(Ascending)</button></li><li class=";
+  htmlFormated_Data += quotationChar;
+  htmlFormated_Data += "nav-item";
+  htmlFormated_Data += quotationChar;
+  htmlFormated_Data += "><button id=";
+  htmlFormated_Data += quotationChar;
+  if(projectTypeToConvert === "Residential")
+  {
+    htmlFormated_Data += "sortProjectByBudgetDescending1";
+  }
+  else if(projectTypeToConvert === "Commercial")
+  {
+    htmlFormated_Data += "sortProjectByBudgetDescending2";
+  }
+  else if(projectTypeToConvert === "Industrial")
+  {
+    htmlFormated_Data += "sortProjectByBudgetDescending3";
+  }
+  else
+  {
+    htmlFormated_Data += "sortProjectByBudgetDescending4";
+  }
+  htmlFormated_Data += quotationChar;
+  htmlFormated_Data += " class=";
+  htmlFormated_Data += quotationChar;
+  htmlFormated_Data += "btn btn-secondary btn-sm me-1 mt-1 mb-1";
+  htmlFormated_Data += quotationChar;
+  htmlFormated_Data += ">Budget<br>(Descending)</button></li><li class=";
+  htmlFormated_Data += quotationChar;
+  htmlFormated_Data += "nav-item";
+  htmlFormated_Data += quotationChar;
+  htmlFormated_Data += "><button id=";
+  htmlFormated_Data += quotationChar;
+  if(projectTypeToConvert === "Residential")
+  {
+    htmlFormated_Data += "sortProjectByProgressAscending1";
+  }
+  else if(projectTypeToConvert === "Commercial")
+  {
+    htmlFormated_Data += "sortProjectByProgressAscending2";
+  }
+  else if(projectTypeToConvert === "Industrial")
+  {
+    htmlFormated_Data += "sortProjectByProgressAscending3";
+  }
+  else
+  {
+    htmlFormated_Data += "sortProjectByProgressAscending4";
+  }
+  htmlFormated_Data += quotationChar;
+  htmlFormated_Data += " class=";
+  htmlFormated_Data += quotationChar;
+  htmlFormated_Data += "btn btn-secondary btn-sm me-1 mt-1 mb-1";
+  htmlFormated_Data += quotationChar;
+  htmlFormated_Data += ">Progress<br>(Ascending)</button></li><li class=";
+  htmlFormated_Data += quotationChar;
+  htmlFormated_Data += "nav-item";
+  htmlFormated_Data += quotationChar;
+  htmlFormated_Data += "><button id=";
+  htmlFormated_Data += quotationChar;
+  if(projectTypeToConvert === "Residential")
+  {
+    htmlFormated_Data += "sortProjectByProgressDescending1";
+  }
+  else if(projectTypeToConvert === "Commercial")
+  {
+    htmlFormated_Data += "sortProjectByProgressDescending2";
+  }
+  else if(projectTypeToConvert === "Industrial")
+  {
+    htmlFormated_Data += "sortProjectByProgressDescending3";
+  }
+  else
+  {
+    htmlFormated_Data += "sortProjectByProgressDescending4";
+  }
+  htmlFormated_Data += quotationChar;
+  htmlFormated_Data += " class=";
+  htmlFormated_Data += quotationChar;
+  htmlFormated_Data += "btn btn-secondary btn-sm me-1 mt-1 mb-1";
+  htmlFormated_Data += quotationChar;
+  htmlFormated_Data += ">Progress<br>(Descending)</button></li></ul></div></div></nav>";
 
   console.log(JSON_ProjectsArray);
 
@@ -165,19 +314,23 @@ function convert_OngoingProjectData_To_HTML(projectTypeToConvert, sortingAttribu
           {
             if(projectTypeToConvert === "Residential")
             {
-              htmlFormated_Data += image_defaultResidentialOngoing;
+              htmlFormated_Data += randomResidentialOngoingImages_Array[Math.floor(Math.random() * (9))];
+              currentproject.PhotoURL = randomResidentialOngoingImages_Array[Math.floor(Math.random() * (9))];
             }
             else if(projectTypeToConvert === "Commercial")
             {
-              htmlFormated_Data += image_defaultCommercialOngoing;
+              htmlFormated_Data += randomCommercialOngoingImages_Array[Math.floor(Math.random() * (3))];
+              currentproject.PhotoURL = randomCommercialOngoingImages_Array[Math.floor(Math.random() * (3))];
             }
             else if(projectTypeToConvert === "Industrial")
             {
-              htmlFormated_Data += image_defaultIndustrialOngoing;
+              htmlFormated_Data += randomIndustrialOngoingImages_Array[Math.floor(Math.random() * (6))];
+              currentproject.PhotoURL = randomIndustrialOngoingImages_Array[Math.floor(Math.random() * (6))];
             }
             else
             {
-              htmlFormated_Data += image_defaultRoadOngoing;
+              htmlFormated_Data += randomRoadOngoingImages_Array[Math.floor(Math.random() * (5))];
+              currentproject.PhotoURL = randomRoadOngoingImages_Array[Math.floor(Math.random() * (5))];
             }
             
           }
@@ -254,7 +407,7 @@ function convert_OngoingProjectData_To_HTML(projectTypeToConvert, sortingAttribu
               htmlFormated_Data += "row text-center ms-3";
               htmlFormated_Data += quotationChar;
               htmlFormated_Data += ">";
-              htmlFormated_Data += "Expected Toal Price&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: $";
+              htmlFormated_Data += "Expected Total Price&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: $";
               htmlFormated_Data += currentproject.TotalBudget;
 
               //[5] Close 7th div wrapper.
@@ -332,13 +485,13 @@ function convert_OngoingProjectData_To_HTML(projectTypeToConvert, sortingAttribu
                 //Calculate actual progress given todays date, start date and end date information from the project.
                 //Check if today is later than the projected end date.
 
-                let startDate_split = currentproject.ProjectStartDate.split("/");
+                let startDate_split = currentproject.ProjectStartDate.split(".");
                 let startDate_day = Number(startDate_split[0]);
                 let startDate_month = Number(startDate_split[1]);
                 let startDate_year = Number(startDate_split[2]);
                 let startDate_OBJ = new Date(startDate_year, startDate_month-1, startDate_day);                  
 
-                let endDate_split = currentproject.ProjectEndDate.split("/");
+                let endDate_split = currentproject.ProjectEndDate.split(".");
                 let endDate_day = Number(endDate_split[0]);
                 let endDate_month = Number(endDate_split[1]);
                 let endDate_year = Number(endDate_split[2]);
@@ -357,7 +510,7 @@ function convert_OngoingProjectData_To_HTML(projectTypeToConvert, sortingAttribu
                   //Today is before the projected deadline. Calculate percentage days remaining.
                   let totalProjectDuration_days = Number(daysBetweenDates(currentproject.ProjectStartDate, currentproject.ProjectEndDate));
 
-                  let projectDurationRemaining_days = Number(daysBetweenDates("" + todayDate.getDate() + "/" + (todayDate.getMonth()-1) + "/" + todayDate.getFullYear(), currentproject.ProjectEndDate));
+                  let projectDurationRemaining_days = Number(daysBetweenDates("" + todayDate.getDate() + "." + (todayDate.getMonth()-1) + "." + todayDate.getFullYear(), currentproject.ProjectEndDate));
                   percentageCompleted = Math.floor(100 - ((projectDurationRemaining_days/totalProjectDuration_days)*100));
                 }
 
@@ -446,7 +599,7 @@ function daysBetweenDates(date1, date2)
   //console.log("end: " + projectEndDate);
 
   //Split given String dates into day, month, year:
-  let date1_split = projectStartDate.split("/");
+  let date1_split = projectStartDate.split(".");
   //console.log(date1_split);
   let date1_day = Number(date1_split[0]);
   //console.log("date: " + date1_day);
@@ -455,7 +608,7 @@ function daysBetweenDates(date1, date2)
   let date1_year = Number(date1_split[2]);
   //console.log("year: " + date1_year);
 
-  let date2_split = projectEndDate.split("/");
+  let date2_split = projectEndDate.split(".");
   let date2_day = Number(date2_split[0]);
   let date2_month = Number(date2_split[1]);
   let date2_year = Number(date2_split[2]);
@@ -683,14 +836,59 @@ function display_OngoingRoadProjects(htmlFormatedProjectData)
   $("#jScript_DisplayOngoingProjects_Road").html(htmlFormatedProjectData);
 }
 
+
+//adds eventhandlers (onClick) to the buttons created in the main display script.
+//Author: K. Dashnaw
+function updateButtonReferences(projectTypeToConvert)
+{
+  if(projectTypeToConvert === "Residential")
+  {
+    $("#sortProjectsbyNameAscending1" ).on( "click", sortProjectByNameAscending);
+    $("#sortProjectByNameDescending1" ).on( "click", sortProjectByNameDescending);
+    $("#sortProjectByBudgetAscending1" ).on( "click", sortProjectByBudgetAscending);
+    $("#sortProjectByBudgetDescending1" ).on( "click", sortProjectByBudgetDescending);
+    $("#sortProjectByProgressAscending1" ).on( "click", sortProjectByProgressAscending);
+    $("#sortProjectByProgressDescending1" ).on( "click", sortProjectByProgressDescending);
+  }
+  else if(projectTypeToConvert === "Commercial")
+  {
+    $("#sortProjectsbyNameAscending2" ).on( "click", sortProjectByNameAscending);
+    $("#sortProjectByNameDescending2" ).on( "click", sortProjectByNameDescending);
+    $("#sortProjectByBudgetAscending2" ).on( "click", sortProjectByBudgetAscending);
+    $("#sortProjectByBudgetDescending2" ).on( "click", sortProjectByBudgetDescending);
+    $("#sortProjectByProgressAscending2" ).on( "click", sortProjectByProgressAscending);
+    $("#sortProjectByProgressDescending2" ).on( "click", sortProjectByProgressDescending);
+  }
+  else if(projectTypeToConvert === "Industrial")
+  {
+    $("#sortProjectsbyNameAscending3" ).on( "click", sortProjectByNameAscending);
+    $("#sortProjectByNameDescending3" ).on( "click", sortProjectByNameDescending);
+    $("#sortProjectByBudgetAscending3" ).on( "click", sortProjectByBudgetAscending);
+    $("#sortProjectByBudgetDescending3" ).on( "click", sortProjectByBudgetDescending);
+    $("#sortProjectByProgressAscending3" ).on( "click", sortProjectByProgressAscending);
+    $("#sortProjectByProgressDescending3" ).on( "click", sortProjectByProgressDescending);
+  }
+  else
+  {
+    $("#sortProjectsbyNameAscending4" ).on( "click", sortProjectByNameAscending);
+    $("#sortProjectByNameDescending4" ).on( "click", sortProjectByNameDescending);
+    $("#sortProjectByBudgetAscending4" ).on( "click", sortProjectByBudgetAscending);
+    $("#sortProjectByBudgetDescending4" ).on( "click", sortProjectByBudgetDescending);
+    $("#sortProjectByProgressAscending4" ).on( "click", sortProjectByProgressAscending);
+    $("#sortProjectByProgressDescending4" ).on( "click", sortProjectByProgressDescending);
+  }
+}
+
+
+
 //Function to convert and display project data. We chain the functions together in order to ensure that they load in the proper sequential order.
 //Author: K. Dashnaw
 function displayProjectData()
 {
-$.when(convert_OngoingProjectData_To_HTML("Residential")).then(display_OngoingResidentialProjects(htmlFormated_Data));
-$.when(convert_OngoingProjectData_To_HTML("Commercial")).then(display_OngoingCommercialProjects(htmlFormated_Data));
-$.when(convert_OngoingProjectData_To_HTML("Industrial")).then(display_OngoingIndustrialProjects(htmlFormated_Data));
-$.when(convert_OngoingProjectData_To_HTML("Road")).then(display_OngoingRoadProjects(htmlFormated_Data));
+$.when(convert_OngoingProjectData_To_HTML("Residential")).then(display_OngoingResidentialProjects(htmlFormated_Data)).then(updateButtonReferences("Residential"));
+$.when(convert_OngoingProjectData_To_HTML("Commercial")).then(display_OngoingCommercialProjects(htmlFormated_Data)).then(updateButtonReferences("Commercial"));
+$.when(convert_OngoingProjectData_To_HTML("Industrial")).then(display_OngoingIndustrialProjects(htmlFormated_Data)).then(updateButtonReferences("Industrial"));
+$.when(convert_OngoingProjectData_To_HTML("Road")).then(display_OngoingRoadProjects(htmlFormated_Data)).then(updateButtonReferences("Road"));
 }
 
 //Sort function, to sort by name (Ascending)
@@ -748,13 +946,13 @@ function sortProjectByProgressAscending()
   JSON_ProjectsArray.ongoingProjectArray = JSON_ProjectsArray.ongoingProjectArray.sort((a, b) => {
 
     //Calculate progress of element a:
-    let startDate_split = a.ProjectStartDate.split("/");
+    let startDate_split = a.ProjectStartDate.split(".");
     let startDate_day = Number(startDate_split[0]);
     let startDate_month = Number(startDate_split[1]);
     let startDate_year = Number(startDate_split[2]);
     let startDate_OBJ = new Date(startDate_year, startDate_month-1, startDate_day);                  
 
-    let endDate_split = a.ProjectEndDate.split("/");
+    let endDate_split = a.ProjectEndDate.split(".");
     let endDate_day = Number(endDate_split[0]);
     let endDate_month = Number(endDate_split[1]);
     let endDate_year = Number(endDate_split[2]);
@@ -773,18 +971,18 @@ function sortProjectByProgressAscending()
       //Today is before the projected deadline. Calculate percentage days remaining.
       let totalProjectDuration_days = Number(daysBetweenDates(a.ProjectStartDate, a.ProjectEndDate));
 
-      let projectDurationRemaining_days = Number(daysBetweenDates("" + todayDate.getDate() + "/" + (todayDate.getMonth()-1) + "/" + todayDate.getFullYear(), a.ProjectEndDate));
+      let projectDurationRemaining_days = Number(daysBetweenDates("" + todayDate.getDate() + "." + (todayDate.getMonth()-1) + "." + todayDate.getFullYear(), a.ProjectEndDate));
       a_percentageCompleted = Math.floor(100 - ((projectDurationRemaining_days/totalProjectDuration_days)*100));
     }
 
       //Calculate progress of element a:
-      startDate_split = b.ProjectStartDate.split("/");
+      startDate_split = b.ProjectStartDate.split(".");
       startDate_day = Number(startDate_split[0]);
       startDate_month = Number(startDate_split[1]);
       startDate_year = Number(startDate_split[2]);
       startDate_OBJ = new Date(startDate_year, startDate_month-1, startDate_day);                  
   
-      endDate_split = b.ProjectEndDate.split("/");
+      endDate_split = b.ProjectEndDate.split(".");
       endDate_day = Number(endDate_split[0]);
       endDate_month = Number(endDate_split[1]);
       endDate_year = Number(endDate_split[2]);
@@ -803,7 +1001,7 @@ function sortProjectByProgressAscending()
         //Today is before the projected deadline. Calculate percentage days remaining.
         let totalProjectDuration_days = Number(daysBetweenDates(b.ProjectStartDate, b.ProjectEndDate));
   
-        let projectDurationRemaining_days = Number(daysBetweenDates("" + todayDate.getDate() + "/" + (todayDate.getMonth()-1) + "/" + todayDate.getFullYear(), b.ProjectEndDate));
+        let projectDurationRemaining_days = Number(daysBetweenDates("" + todayDate.getDate() + "." + (todayDate.getMonth()-1) + "." + todayDate.getFullYear(), b.ProjectEndDate));
         b_percentageCompleted = Math.floor(100 - ((projectDurationRemaining_days/totalProjectDuration_days)*100));
       }
 
@@ -823,13 +1021,13 @@ function sortProjectByProgressDescending()
   JSON_ProjectsArray.ongoingProjectArray = JSON_ProjectsArray.ongoingProjectArray.sort((a, b) => {
 
     //Calculate progress of element a:
-    let startDate_split = a.ProjectStartDate.split("/");
+    let startDate_split = a.ProjectStartDate.split(".");
     let startDate_day = Number(startDate_split[0]);
     let startDate_month = Number(startDate_split[1]);
     let startDate_year = Number(startDate_split[2]);
     let startDate_OBJ = new Date(startDate_year, startDate_month-1, startDate_day);                  
 
-    let endDate_split = a.ProjectEndDate.split("/");
+    let endDate_split = a.ProjectEndDate.split(".");
     let endDate_day = Number(endDate_split[0]);
     let endDate_month = Number(endDate_split[1]);
     let endDate_year = Number(endDate_split[2]);
@@ -848,18 +1046,18 @@ function sortProjectByProgressDescending()
       //Today is before the projected deadline. Calculate percentage days remaining.
       let totalProjectDuration_days = Number(daysBetweenDates(a.ProjectStartDate, a.ProjectEndDate));
 
-      let projectDurationRemaining_days = Number(daysBetweenDates("" + todayDate.getDate() + "/" + (todayDate.getMonth()-1) + "/" + todayDate.getFullYear(), a.ProjectEndDate));
+      let projectDurationRemaining_days = Number(daysBetweenDates("" + todayDate.getDate() + "." + (todayDate.getMonth()-1) + "." + todayDate.getFullYear(), a.ProjectEndDate));
       a_percentageCompleted = Math.floor(100 - ((projectDurationRemaining_days/totalProjectDuration_days)*100));
     }
 
       //Calculate progress of element a:
-      startDate_split = b.ProjectStartDate.split("/");
+      startDate_split = b.ProjectStartDate.split(".");
       startDate_day = Number(startDate_split[0]);
       startDate_month = Number(startDate_split[1]);
       startDate_year = Number(startDate_split[2]);
       startDate_OBJ = new Date(startDate_year, startDate_month-1, startDate_day);                  
   
-      endDate_split = b.ProjectEndDate.split("/");
+      endDate_split = b.ProjectEndDate.split(".");
       endDate_day = Number(endDate_split[0]);
       endDate_month = Number(endDate_split[1]);
       endDate_year = Number(endDate_split[2]);
@@ -878,7 +1076,7 @@ function sortProjectByProgressDescending()
         //Today is before the projected deadline. Calculate percentage days remaining.
         let totalProjectDuration_days = Number(daysBetweenDates(b.ProjectStartDate, b.ProjectEndDate));
   
-        let projectDurationRemaining_days = Number(daysBetweenDates("" + todayDate.getDate() + "/" + (todayDate.getMonth()-1) + "/" + todayDate.getFullYear(), b.ProjectEndDate));
+        let projectDurationRemaining_days = Number(daysBetweenDates("" + todayDate.getDate() + "." + (todayDate.getMonth()-1) + "." + todayDate.getFullYear(), b.ProjectEndDate));
         b_percentageCompleted = Math.floor(100 - ((projectDurationRemaining_days/totalProjectDuration_days)*100));
       }
 
@@ -894,13 +1092,3 @@ function sortProjectByProgressDescending()
 
 //Display the project information in the proper sections:
 sortProjectByNameAscending();
-$("#sortProjectsbyNameAscending" ).on( "click", sortProjectByNameAscending);
-$("#sortProjectByNameDescending" ).on( "click", sortProjectByNameDescending);
-$("#sortProjectByBudgetAscending" ).on( "click", sortProjectByBudgetAscending);
-$("#sortProjectByBudgetDescending" ).on( "click", sortProjectByBudgetDescending);
-$("#sortProjectByProgressAscending" ).on( "click", sortProjectByProgressAscending);
-$("#sortProjectByProgressDescending" ).on( "click", sortProjectByProgressDescending);
-
-
-
-
