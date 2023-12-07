@@ -329,11 +329,8 @@ function convert_OngoingProjectData_To_HTML(projectTypeToConvert, sortingAttribu
               htmlFormated_Data += ">";
 
                 //[6] Open 14th div wrapper: <div class="progress-bar progress-bar-striped active" role="progressbar" aria-valuenow="PERCENTAGE" aria-valuemin="0" aria-valuemax="100" style="width:PERCENTAGE">PERCENTAGE
-
                 //Calculate actual progress given todays date, start date and end date information from the project.
-
                 //Check if today is later than the projected end date.
-
 
                 let startDate_split = currentproject.ProjectStartDate.split("/");
                 let startDate_day = Number(startDate_split[0]);
@@ -686,16 +683,18 @@ function display_OngoingRoadProjects(htmlFormatedProjectData)
   $("#jScript_DisplayOngoingProjects_Road").html(htmlFormatedProjectData);
 }
 
-//Import and display project data. We chain the functions together in order to ensure that they load in the proper sequential order.
-
+//Function to convert and display project data. We chain the functions together in order to ensure that they load in the proper sequential order.
+//Author: K. Dashnaw
 function displayProjectData()
 {
-  $.when(convert_OngoingProjectData_To_HTML("Residential")).then(display_OngoingResidentialProjects(htmlFormated_Data));
+$.when(convert_OngoingProjectData_To_HTML("Residential")).then(display_OngoingResidentialProjects(htmlFormated_Data));
 $.when(convert_OngoingProjectData_To_HTML("Commercial")).then(display_OngoingCommercialProjects(htmlFormated_Data));
 $.when(convert_OngoingProjectData_To_HTML("Industrial")).then(display_OngoingIndustrialProjects(htmlFormated_Data));
 $.when(convert_OngoingProjectData_To_HTML("Road")).then(display_OngoingRoadProjects(htmlFormated_Data));
 }
 
+//Sort function, to sort by name (Ascending)
+//Author: K. Dashnaw
 function sortProjectByNameAscending()
 {
   JSON_ProjectsArray.ongoingProjectArray = JSON_ProjectsArray.ongoingProjectArray.sort((a, b) => {
@@ -706,6 +705,8 @@ function sortProjectByNameAscending()
   displayProjectData();
 }
 
+//Sort function, to sort by name (Descending)
+//Author: K. Dashnaw
 function sortProjectByNameDescending()
 {
   JSON_ProjectsArray.ongoingProjectArray = JSON_ProjectsArray.ongoingProjectArray.sort((a, b) => {
@@ -716,10 +717,189 @@ function sortProjectByNameDescending()
   displayProjectData();
 }
 
-sortProjectByNameAscending();
-sortProjectByNameDescending();
+//Sort function, to sort by budget size (Ascending)
+//Author: K. Dashnaw
+function sortProjectByBudgetAscending()
+{
+  JSON_ProjectsArray.ongoingProjectArray = JSON_ProjectsArray.ongoingProjectArray.sort((a, b) => {    
+    if (a.TotalBudget < b.TotalBudget) {
+      return -1;
+    }
+  });
+  displayProjectData();
+}
 
+//Sort function, to sort by budget size (Descending)
+//Author: K. Dashnaw
+function sortProjectByBudgetDescending()
+{
+  JSON_ProjectsArray.ongoingProjectArray = JSON_ProjectsArray.ongoingProjectArray.sort((a, b) => {   
+    if (a.TotalBudget > b.TotalBudget) {
+      return -1;
+    }
+  });
+  displayProjectData();
+}
+
+//Sort function, to sort by progress (Ascending)
+//Author: K. Dashnaw
+function sortProjectByProgressAscending()
+{
+  JSON_ProjectsArray.ongoingProjectArray = JSON_ProjectsArray.ongoingProjectArray.sort((a, b) => {
+
+    //Calculate progress of element a:
+    let startDate_split = a.ProjectStartDate.split("/");
+    let startDate_day = Number(startDate_split[0]);
+    let startDate_month = Number(startDate_split[1]);
+    let startDate_year = Number(startDate_split[2]);
+    let startDate_OBJ = new Date(startDate_year, startDate_month-1, startDate_day);                  
+
+    let endDate_split = a.ProjectEndDate.split("/");
+    let endDate_day = Number(endDate_split[0]);
+    let endDate_month = Number(endDate_split[1]);
+    let endDate_year = Number(endDate_split[2]);
+    let endDate_OBJ = new Date(endDate_year, endDate_month-1, endDate_day);
+
+    let a_percentageCompleted = 100;
+
+    //Check if project has started yet:
+    if(isBefore(todayDate,startDate_OBJ) === true)
+    {
+      a_percentageCompleted = 0;
+    }
+    //Check if today is before the project end date;
+    else if(isBefore(todayDate,endDate_OBJ) === true)
+    {
+      //Today is before the projected deadline. Calculate percentage days remaining.
+      let totalProjectDuration_days = Number(daysBetweenDates(a.ProjectStartDate, a.ProjectEndDate));
+
+      let projectDurationRemaining_days = Number(daysBetweenDates("" + todayDate.getDate() + "/" + (todayDate.getMonth()-1) + "/" + todayDate.getFullYear(), a.ProjectEndDate));
+      a_percentageCompleted = Math.floor(100 - ((projectDurationRemaining_days/totalProjectDuration_days)*100));
+    }
+
+      //Calculate progress of element a:
+      startDate_split = b.ProjectStartDate.split("/");
+      startDate_day = Number(startDate_split[0]);
+      startDate_month = Number(startDate_split[1]);
+      startDate_year = Number(startDate_split[2]);
+      startDate_OBJ = new Date(startDate_year, startDate_month-1, startDate_day);                  
+  
+      endDate_split = b.ProjectEndDate.split("/");
+      endDate_day = Number(endDate_split[0]);
+      endDate_month = Number(endDate_split[1]);
+      endDate_year = Number(endDate_split[2]);
+      endDate_OBJ = new Date(endDate_year, endDate_month-1, endDate_day);
+  
+      let b_percentageCompleted = 100;
+  
+      //Check if project has started yet:
+      if(isBefore(todayDate,startDate_OBJ) === true)
+      {
+        b_percentageCompleted = 0;
+      }
+      //Check if today is before the project end date;
+      else if(isBefore(todayDate,endDate_OBJ) === true)
+      {
+        //Today is before the projected deadline. Calculate percentage days remaining.
+        let totalProjectDuration_days = Number(daysBetweenDates(b.ProjectStartDate, b.ProjectEndDate));
+  
+        let projectDurationRemaining_days = Number(daysBetweenDates("" + todayDate.getDate() + "/" + (todayDate.getMonth()-1) + "/" + todayDate.getFullYear(), b.ProjectEndDate));
+        b_percentageCompleted = Math.floor(100 - ((projectDurationRemaining_days/totalProjectDuration_days)*100));
+      }
+
+
+    if (a_percentageCompleted < b_percentageCompleted) {
+      return -1;
+    }
+  });
+  displayProjectData();
+}
+
+
+//Sort function, to sort by progress (Descending)
+//Author: K. Dashnaw
+function sortProjectByProgressDescending()
+{
+  JSON_ProjectsArray.ongoingProjectArray = JSON_ProjectsArray.ongoingProjectArray.sort((a, b) => {
+
+    //Calculate progress of element a:
+    let startDate_split = a.ProjectStartDate.split("/");
+    let startDate_day = Number(startDate_split[0]);
+    let startDate_month = Number(startDate_split[1]);
+    let startDate_year = Number(startDate_split[2]);
+    let startDate_OBJ = new Date(startDate_year, startDate_month-1, startDate_day);                  
+
+    let endDate_split = a.ProjectEndDate.split("/");
+    let endDate_day = Number(endDate_split[0]);
+    let endDate_month = Number(endDate_split[1]);
+    let endDate_year = Number(endDate_split[2]);
+    let endDate_OBJ = new Date(endDate_year, endDate_month-1, endDate_day);
+
+    let a_percentageCompleted = 100;
+
+    //Check if project has started yet:
+    if(isBefore(todayDate,startDate_OBJ) === true)
+    {
+      a_percentageCompleted = 0;
+    }
+    //Check if today is before the project end date;
+    else if(isBefore(todayDate,endDate_OBJ) === true)
+    {
+      //Today is before the projected deadline. Calculate percentage days remaining.
+      let totalProjectDuration_days = Number(daysBetweenDates(a.ProjectStartDate, a.ProjectEndDate));
+
+      let projectDurationRemaining_days = Number(daysBetweenDates("" + todayDate.getDate() + "/" + (todayDate.getMonth()-1) + "/" + todayDate.getFullYear(), a.ProjectEndDate));
+      a_percentageCompleted = Math.floor(100 - ((projectDurationRemaining_days/totalProjectDuration_days)*100));
+    }
+
+      //Calculate progress of element a:
+      startDate_split = b.ProjectStartDate.split("/");
+      startDate_day = Number(startDate_split[0]);
+      startDate_month = Number(startDate_split[1]);
+      startDate_year = Number(startDate_split[2]);
+      startDate_OBJ = new Date(startDate_year, startDate_month-1, startDate_day);                  
+  
+      endDate_split = b.ProjectEndDate.split("/");
+      endDate_day = Number(endDate_split[0]);
+      endDate_month = Number(endDate_split[1]);
+      endDate_year = Number(endDate_split[2]);
+      endDate_OBJ = new Date(endDate_year, endDate_month-1, endDate_day);
+  
+      let b_percentageCompleted = 100;
+  
+      //Check if project has started yet:
+      if(isBefore(todayDate,startDate_OBJ) === true)
+      {
+        b_percentageCompleted = 0;
+      }
+      //Check if today is before the project end date;
+      else if(isBefore(todayDate,endDate_OBJ) === true)
+      {
+        //Today is before the projected deadline. Calculate percentage days remaining.
+        let totalProjectDuration_days = Number(daysBetweenDates(b.ProjectStartDate, b.ProjectEndDate));
+  
+        let projectDurationRemaining_days = Number(daysBetweenDates("" + todayDate.getDate() + "/" + (todayDate.getMonth()-1) + "/" + todayDate.getFullYear(), b.ProjectEndDate));
+        b_percentageCompleted = Math.floor(100 - ((projectDurationRemaining_days/totalProjectDuration_days)*100));
+      }
+
+
+    if (a_percentageCompleted > b_percentageCompleted) {
+      return -1;
+    }
+  });
+  displayProjectData();
+}
+
+
+
+//Display the project information in the proper sections:
+sortProjectByNameAscending();
 $("#sortProjectsbyNameAscending" ).on( "click", sortProjectByNameAscending);
+$("#sortProjectByNameDescending" ).on( "click", sortProjectByNameDescending);
+$("#sortProjectByBudgetAscending" ).on( "click", sortProjectByBudgetAscending);
+$("#sortProjectByBudgetDescending" ).on( "click", sortProjectByBudgetDescending);
+$("#sortProjectByProgressAscending" ).on( "click", sortProjectByProgressAscending);
+$("#sortProjectByProgressDescending" ).on( "click", sortProjectByProgressDescending);
 
 
 
