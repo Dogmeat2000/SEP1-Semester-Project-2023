@@ -683,16 +683,18 @@ function display_OngoingRoadProjects(htmlFormatedProjectData)
   $("#jScript_DisplayOngoingProjects_Road").html(htmlFormatedProjectData);
 }
 
-//Import and display project data. We chain the functions together in order to ensure that they load in the proper sequential order.
-
+//Function to convert and display project data. We chain the functions together in order to ensure that they load in the proper sequential order.
+//Author: K. Dashnaw
 function displayProjectData()
 {
-  $.when(convert_OngoingProjectData_To_HTML("Residential")).then(display_OngoingResidentialProjects(htmlFormated_Data));
+$.when(convert_OngoingProjectData_To_HTML("Residential")).then(display_OngoingResidentialProjects(htmlFormated_Data));
 $.when(convert_OngoingProjectData_To_HTML("Commercial")).then(display_OngoingCommercialProjects(htmlFormated_Data));
 $.when(convert_OngoingProjectData_To_HTML("Industrial")).then(display_OngoingIndustrialProjects(htmlFormated_Data));
 $.when(convert_OngoingProjectData_To_HTML("Road")).then(display_OngoingRoadProjects(htmlFormated_Data));
 }
 
+//Sort function, to sort by name (Ascending)
+//Author: K. Dashnaw
 function sortProjectByNameAscending()
 {
   JSON_ProjectsArray.ongoingProjectArray = JSON_ProjectsArray.ongoingProjectArray.sort((a, b) => {
@@ -703,6 +705,8 @@ function sortProjectByNameAscending()
   displayProjectData();
 }
 
+//Sort function, to sort by name (Descending)
+//Author: K. Dashnaw
 function sortProjectByNameDescending()
 {
   JSON_ProjectsArray.ongoingProjectArray = JSON_ProjectsArray.ongoingProjectArray.sort((a, b) => {
@@ -713,6 +717,32 @@ function sortProjectByNameDescending()
   displayProjectData();
 }
 
+//Sort function, to sort by budget size (Ascending)
+//Author: K. Dashnaw
+function sortProjectByBudgetAscending()
+{
+  JSON_ProjectsArray.ongoingProjectArray = JSON_ProjectsArray.ongoingProjectArray.sort((a, b) => {    
+    if (a.TotalBudget < b.TotalBudget) {
+      return -1;
+    }
+  });
+  displayProjectData();
+}
+
+//Sort function, to sort by budget size (Descending)
+//Author: K. Dashnaw
+function sortProjectByBudgetDescending()
+{
+  JSON_ProjectsArray.ongoingProjectArray = JSON_ProjectsArray.ongoingProjectArray.sort((a, b) => {   
+    if (a.TotalBudget > b.TotalBudget) {
+      return -1;
+    }
+  });
+  displayProjectData();
+}
+
+//Sort function, to sort by progress (Ascending)
+//Author: K. Dashnaw
 function sortProjectByProgressAscending()
 {
   JSON_ProjectsArray.ongoingProjectArray = JSON_ProjectsArray.ongoingProjectArray.sort((a, b) => {
@@ -785,6 +815,9 @@ function sortProjectByProgressAscending()
   displayProjectData();
 }
 
+
+//Sort function, to sort by progress (Descending)
+//Author: K. Dashnaw
 function sortProjectByProgressDescending()
 {
   JSON_ProjectsArray.ongoingProjectArray = JSON_ProjectsArray.ongoingProjectArray.sort((a, b) => {
@@ -859,11 +892,14 @@ function sortProjectByProgressDescending()
 
 
 
-
+//Display the project information in the proper sections:
 sortProjectByNameAscending();
-sortProjectByNameDescending();
-
 $("#sortProjectsbyNameAscending" ).on( "click", sortProjectByNameAscending);
+$("#sortProjectByNameDescending" ).on( "click", sortProjectByNameDescending);
+$("#sortProjectByBudgetAscending" ).on( "click", sortProjectByBudgetAscending);
+$("#sortProjectByBudgetDescending" ).on( "click", sortProjectByBudgetDescending);
+$("#sortProjectByProgressAscending" ).on( "click", sortProjectByProgressAscending);
+$("#sortProjectByProgressDescending" ).on( "click", sortProjectByProgressDescending);
 
 
 
