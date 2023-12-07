@@ -53,7 +53,7 @@ var quotationChar = String.fromCharCode(34); //Ascii value for the ' " ' char, t
 //This function converts the imported JSON array into the proper html formatted version for compatible with display on the webpage:
 //Project type/Parameter is one of these: "Residential", "Road", "Industrial" or "Commercial". Anything else will result in an error, since these do not exist in the exported data.
 //Author: K. Dashnaw
-function convert_OngoingProjectData_To_HTML(projectTypeToConvert, sortingAttribute)
+function convert_OngoingProjectData_To_HTML(projectTypeToConvert)
 {
   console.log("converting imported json data to html compatible formats of type: " + projectTypeToConvert);
   let projectCounter = 0; //Used to evaluate if there are any projects of this type in the system. Else display an information text on the website informing of no current projects of this type.
@@ -274,6 +274,10 @@ function convert_OngoingProjectData_To_HTML(projectTypeToConvert, sortingAttribu
 
   console.log(JSON_ProjectsArray);
 
+
+
+
+  //From here an below we add the project data information. Above was only the sorting bar funktionality!
 
   for (let index = 0; index < JSON_ProjectsArray.ongoingProjectArray.length; index++) 
   {
