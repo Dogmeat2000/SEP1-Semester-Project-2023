@@ -15,14 +15,116 @@ var htmlFormated_Data = ""; //Contains the HTML formated ongoing residential pro
 var quotationChar = String.fromCharCode(34); //Ascii value for the ' " ' char, that is needed when converting this to the desired html format.
 
 
+
+//This function removes the attribute "value" from the array "name". It requires Jquery to function.
+//It is based on an answer given on StackOverflow: https://stackoverflow.com/questions/5767325/how-can-i-remove-a-specific-item-from-an-array-in-javascript
+/*Array.prototype.removeValue = function(name, value)
+{
+  var array = $.map(this, function(v,i)
+  {
+     return v[name] === value ? null : v;
+  });
+  this.length = 0; //clear original array
+  this.push.apply(this, array); //push all elements except the one we want to delete
+}*/
+
+
+
 //This function converts the imported JSON array into the proper html formatted version for compatible with display on the webpage:
 //Project type/Parameter is one of these: "Residential", "Road", "Industrial" or "Commercial". Anything else will result in an error, since these do not exist in the exported data.
 //Author: K. Dashnaw
-function convert_OngoingProjectData_To_HTML(projectTypeToConvert)
+function convert_OngoingProjectData_To_HTML(projectTypeToConvert, sortingAttribute)
 {
   console.log("converting imported json data to html compatible formats of type: " + projectTypeToConvert);
   let projectCounter = 0; //Used to evaluate if there are any projects of this type in the system. Else display an information text on the website informing of no current projects of this type.
   htmlFormated_Data = ""; //Reset html data container.
+  
+
+  //Display a sorting bar:
+  /*htmlFormated_Data += "<nav class=";
+  htmlFormated_Data += quotationChar;
+  htmlFormated_Data += "navbar navbar-expand navbar-dark navigationBarBackground shadow-lg rounded-3 mt-1";
+  htmlFormated_Data += quotationChar;
+  htmlFormated_Data += "id=";
+  htmlFormated_Data += quotationChar;
+  htmlFormated_Data += "frontpage_SubNavBar";
+  htmlFormated_Data += quotationChar;
+  htmlFormated_Data += ">";
+  htmlFormated_Data += "<div class=";
+  htmlFormated_Data += quotationChar;
+  htmlFormated_Data += "FrontPageCustomWidth d-flex justify-content-center";
+  htmlFormated_Data += quotationChar;
+  htmlFormated_Data += ">";
+  htmlFormated_Data += "<div class=";
+  htmlFormated_Data += quotationChar;
+  htmlFormated_Data += quotationChar;
+  htmlFormated_Data += " id=";
+  htmlFormated_Data += quotationChar;
+  htmlFormated_Data += "frontpage_Smoothscroll";
+  htmlFormated_Data += quotationChar;
+  htmlFormated_Data += ">";
+  htmlFormated_Data += "<ul class=";
+  htmlFormated_Data += quotationChar;
+  htmlFormated_Data += "nav navbar-nav";
+  htmlFormated_Data += quotationChar;
+  htmlFormated_Data += ">";
+  htmlFormated_Data += "<li class=";
+  htmlFormated_Data += quotationChar;
+  htmlFormated_Data += "<li class=";
+  htmlFormated_Data += quotationChar;
+  htmlFormated_Data += "nav-item";
+  htmlFormated_Data += quotationChar;
+  htmlFormated_Data += ">";
+  htmlFormated_Data += "<a href=";
+  htmlFormated_Data += quotationChar;
+  htmlFormated_Data += "#Promotion_Section";
+  htmlFormated_Data += quotationChar;
+  htmlFormated_Data += " class=";
+  htmlFormated_Data += quotationChar;
+  htmlFormated_Data += "btn btn-secondary btn-sm me-1";
+  htmlFormated_Data += quotationChar;
+  htmlFormated_Data += ">Sort by: Name (Ascending)</a>";
+  htmlFormated_Data += "</li>";
+  htmlFormated_Data += quotationChar;
+  htmlFormated_Data += "<li class=";
+  htmlFormated_Data += quotationChar;
+  htmlFormated_Data += "nav-item";
+  htmlFormated_Data += quotationChar;
+  htmlFormated_Data += ">";
+  htmlFormated_Data += "<a href=";
+  htmlFormated_Data += quotationChar;
+  htmlFormated_Data += "#Frontpage_Section_1";
+  htmlFormated_Data += quotationChar;
+  htmlFormated_Data += " class=";
+  htmlFormated_Data += quotationChar;
+  htmlFormated_Data += "btn btn-secondary btn-sm me-1";
+  htmlFormated_Data += quotationChar;
+  htmlFormated_Data += ">Our Expertise</a>";
+  htmlFormated_Data += "</li>";
+  htmlFormated_Data += quotationChar;
+  htmlFormated_Data += "<li class=";
+  htmlFormated_Data += quotationChar;
+  htmlFormated_Data += "nav-item";
+  htmlFormated_Data += quotationChar;
+  htmlFormated_Data += ">";
+  htmlFormated_Data += "<a href=";
+  htmlFormated_Data += quotationChar;
+  htmlFormated_Data += "#Frontpage_Section_2";
+  htmlFormated_Data += quotationChar;
+  htmlFormated_Data += " class=";
+  htmlFormated_Data += quotationChar;
+  htmlFormated_Data += "btn btn-secondary btn-sm me-1";
+  htmlFormated_Data += quotationChar;
+  htmlFormated_Data += ">Our Promise</a>";
+  htmlFormated_Data += "</li>";
+  htmlFormated_Data += "</ul>";
+  htmlFormated_Data += "</div>";
+  htmlFormated_Data += "</div>";
+  htmlFormated_Data += "</nav>";*/
+
+
+  console.log(JSON_ProjectsArray);
+
 
   for (let index = 0; index < JSON_ProjectsArray.ongoingProjectArray.length; index++) 
   {
@@ -585,9 +687,40 @@ function display_OngoingRoadProjects(htmlFormatedProjectData)
 }
 
 //Import and display project data. We chain the functions together in order to ensure that they load in the proper sequential order.
-$.when(convert_OngoingProjectData_To_HTML("Residential")).then(display_OngoingResidentialProjects(htmlFormated_Data));
+
+function displayProjectData()
+{
+  $.when(convert_OngoingProjectData_To_HTML("Residential")).then(display_OngoingResidentialProjects(htmlFormated_Data));
 $.when(convert_OngoingProjectData_To_HTML("Commercial")).then(display_OngoingCommercialProjects(htmlFormated_Data));
 $.when(convert_OngoingProjectData_To_HTML("Industrial")).then(display_OngoingIndustrialProjects(htmlFormated_Data));
 $.when(convert_OngoingProjectData_To_HTML("Road")).then(display_OngoingRoadProjects(htmlFormated_Data));
+}
+
+function sortProjectByNameAscending()
+{
+  JSON_ProjectsArray.ongoingProjectArray = JSON_ProjectsArray.ongoingProjectArray.sort((a, b) => {
+    if (a.ProjectName < b.ProjectName) {
+      return -1;
+    }
+  });
+  displayProjectData();
+}
+
+function sortProjectByNameDescending()
+{
+  JSON_ProjectsArray.ongoingProjectArray = JSON_ProjectsArray.ongoingProjectArray.sort((a, b) => {
+    if (b.ProjectName < a.ProjectName) {
+      return -1;
+    }
+  });
+  displayProjectData();
+}
+
+sortProjectByNameAscending();
+sortProjectByNameDescending();
+
+$("#sortProjectsbyNameAscending" ).on( "click", sortProjectByNameAscending);
+
+
 
 
