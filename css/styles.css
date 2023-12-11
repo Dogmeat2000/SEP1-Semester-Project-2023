@@ -19,7 +19,7 @@
 }
 
 .FrontPageSubElementBackground {
-  background: url("/images/Semi-Transparant_PhotoBackground.webp") repeat;
+  background: url("../images/Semi-Transparant_PhotoBackground.webp") repeat;
   border-radius: 20px;
 }
 
@@ -35,7 +35,7 @@
 
 @media screen and (max-width:768px) {
   .carousel-caption {
-    background: url("/images/Semi-Transparant_PhotoBackground.webp") repeat;
+    background: url("../images/Semi-Transparant_PhotoBackground.webp") repeat;
     border-radius: 120px;
     top: 0.5rem;
     bottom: auto;
@@ -80,7 +80,7 @@
 
 @media screen and (min-width:769px) {
   .carousel-caption {
-    background: url("/images/Semi-Transparant_PhotoBackground.webp") repeat;
+    background: url("../images/Semi-Transparant_PhotoBackground.webp") repeat;
     border-radius: 120px;
     top: 0.5rem;
     bottom: auto;
@@ -133,7 +133,7 @@
 
 @media screen and (min-width:1400px) {
   .carousel-caption {
-    background: url("/images/Semi-Transparant_PhotoBackground.webp") repeat;
+    background: url("../images/Semi-Transparant_PhotoBackground.webp") repeat;
     border-radius: 120px;
     top: 0.5rem;
     bottom: auto;
@@ -151,7 +151,7 @@
 /*The below classes are used on the subpages*/
 
 .SubPageElementBackground {
-  background: url("/images/SemiTransparant_BlueBackground.webp") repeat;
+  background: url("../images/SemiTransparant_BlueBackground.webp") repeat;
   border-radius: 20px;
 }
 
